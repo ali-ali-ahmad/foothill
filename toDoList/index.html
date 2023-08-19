@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/d1e074c3fa.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="js/script.js"></script>
+    <script src="js/toDoMaker.js"></script>
+    <script src="js/counter.js"></script>
+    <title>ToDo List</title>
+</head>
+<body>
+    <header>
+        <h1>To-Do List</h1>
+    </header>
+    <main>
+        <div class="tools">
+            <div class="add_toDo">
+                <input type="text" id="new-todo" placeholder="New TODO" onkeydown="handleKeyPress(event)">
+                <i class="fa-solid fa-plus fa-xl" style="cursor: pointer;" onclick="addNewTodo()"></i>
+            </div>
+            <div class="search_toDo">
+                <input type="text" id="search-todo" placeholder="Search TODO" oninput="searchToDo(event.target.value)">
+                <i class="fa-solid fa-magnifying-glass fa-lg" style="cursor: pointer;"></i>
+            </div>
+        </div>
+        <div class="container">
+            <div class="toDo_pending">
+                <h2>Pending Tasks</h2>
+                <ol id="toDo_pending"></ol>
+                <h5 class="pending_counter">total pending tasks</h5>
+            </div>
+            <div class="toDo_completed">
+                <h2>Completed Tasks</h2>
+                <ol id="toDo_completed"></ol>
+                <h5 class="completed_counter">total pending tasks</h5>
+            </div>
+        </div>
+    </main>
+    <footer>
+        <h3 class="all_counter">total tasks</h3>
+    </footer>
+    <script src="js/editStatus.js"></script>
+    <script src="js/addToDo.js"></script>
+    <script src="js/deleteToDo.js"></script>
+    <script src="js/editToDo.js"></script>
+    <script src="js/searchToDo.js"></script>
+</body>
+</html>
