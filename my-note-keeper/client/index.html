@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/d1e074c3fa.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="style.css">
+    <script src="script/noteTemplate.js"></script>
+    <script src="script/fetchNotes.js"></script>
+    <script src="script/addNote.js"></script>
+    <script src="script/deleteNote.js"></script>
+    <script src="script/updateNote.js"></script>
+    <script src="script/loadPages.js"></script>
+    <title>My Note Keeper</title>
+</head>
+<body>
+    <header>
+        <h1>My Note Keeper</h1>
+        <div class="search_note">
+            <input type="text" id="search-note" placeholder="Search Notes" oninput="fetchNotes(event.target.value)">
+            <i class="fa-solid fa-magnifying-glass fa-lg" style="cursor: pointer;"></i>
+        </div>
+    </header>
+    <main class="container">
+        <div class="add_note">
+            <h2>New note</h2>
+            <form id="noteForm">
+                <input type="text" id="title" placeholder="Title">
+                <input type="text" id="content" placeholder="Content">
+                <input type="submit" value="Add Note" onclick="addNewNote()">
+            </form>
+        </div>
+        <div class="note_display">
+            <h2>Added Notes</h2>
+            <div class="counter">
+                <div class="current_page">
+                    Current Page: <span id="currentPageDisplay">1</span>
+                </div>
+                <div class="all_notes">
+                    All Notes: <span id="allNotesCountDisplay">1</span>
+                </div>
+            </div>
+            <table id="noteTable">
+                <tr>
+                    <th>Title</th>
+                    <th>Content</th>
+                    <th>Added Date</th>
+                    <th>Actions</th>
+                </tr>
+            </table>
+        </div>
+        <div class="load_page">
+            <input type="submit" value="Previous" onclick="fetchPreviousPage()">
+            <input type="submit" value="Next" onclick="fetchNextPage()">
+        </div>
+    </main>
+</body>
+</html>
