@@ -25,17 +25,21 @@ function editNote(id) {
     }
 }
 
-
 async function updateNote(id, title, content) {
-    const response = await fetch(`http://localhost:8000/api/notes/${id}`, {
-        method: "PUT",
-        headers: {
-            "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ title, content }),
-    });
-    
-    if (!response.ok) {
-        alert("Failed to update note.");
-    } 
+    try {
+        const response = await fetch(`http://localhost:8000/api/notes/${id}`, {
+            method: "PUT",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({ title, content }),
+        });
+
+        if (!response.ok) {
+            alert("Failed to update note.");
+        }
+    } catch (error) {
+        console.error("An error occurred:", error);
+    }
 }
+

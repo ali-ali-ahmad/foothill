@@ -1,31 +1,38 @@
 let currentPage = 1;
 
 async function fetchNextPage() {
-    currentPage++;
-    const response = await fetch(`http://localhost:8000/api/notes/page?page=${currentPage}`);
-    const nextPageNotes = await response.json();
+    try {
+        currentPage++;
+        const response = await fetch(`http://localhost:8000/api/notes/page?page=${currentPage}`);
+        const nextPageNotes = await response.json();
 
-    if (!nextPageNotes.length) {
-        console.log("No more notes available.");
-        currentPage--;
-        return;
+        if (!nextPageNotes.length) {
+            console.log("No more notes available.");
+            currentPage--;
+            return;
+        }
+
+        noteMaker(nextPageNotes);
+        updateCurrentPageDisplay();
+    } catch (error) {
+        console.error("An error occurred:", error);
     }
-
-    noteMaker(nextPageNotes);
-    updateCurrentPageDisplay();
 }
 
 async function fetchPreviousPage() {
-    if (currentPage === 1){
-        return
+    try {
+        if (currentPage === 1) {
+            return;
+        }
+        currentPage--;
+
+        const response = await fetch(`http://localhost:8000/api/notes/page?page=${currentPage}`);
+        const previousPageNotes = await response.json();
+        noteMaker(previousPageNotes);
+        updateCurrentPageDisplay();
+    } catch (error) {
+        console.error("An error occurred:", error);
     }
-    currentPage--;
-
-    const response = await fetch(`http://localhost:8000/api/notes/page?page=${currentPage}`);
-
-    const previousPageNotes = await response.json();
-    noteMaker(previousPageNotes);
-    updateCurrentPageDisplay();
 }
 
 function updateCurrentPageDisplay() {
