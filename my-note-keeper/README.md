@@ -2,7 +2,7 @@
 
 <img src="Screenshot.jpg"/>
 
-<h2>## Overview</h2>
+<h2>Overview</h2>
 
 <p>Welcome to <strong>**My Note Keeper**</strong>, a simple web application that allows you to create and manage your notes seamlessly. This project showcases a full-stack application with HTML, CSS, and JavaScript for the front end, Node.js with Express for the back end, and MongoDB for the database.</p>
 
