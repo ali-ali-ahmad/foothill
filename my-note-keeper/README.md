@@ -1,4 +1,5 @@
 <h1>My Note Keeper</h1>
+
 <img scr="Screenshot.jpg"/>
 
 <h2>Running the app:</h2>
@@ -18,6 +19,7 @@
 </ul>
 
 <h3>Running the server:</h3>
+
 <p>Make sure to install nodemon packages:</p>
 <code>npm install nodemon</code>
 
