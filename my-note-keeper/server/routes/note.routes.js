@@ -1,9 +1,9 @@
 const NoteController = require ('../controllers/note.controller');
 module.exports = function(app){
-    app.post('/api/notes', NoteController.createNote);
-    app.get('/api/notes', NoteController.getAllNotes);
-    app.get('/api/notes/page', NoteController.getNotesPage);
-    app.get('/api/notes/:id', NoteController.getNote);
-    app.put('/api/notes/:id', NoteController.updateNote);
-    app.delete('/api/notes/:id', NoteController.deleteNote);
-    app.get('/api/notes/search/:query', NoteController.searchNotes);}
+    app.post('/', NoteController.createNote);
+    app.get('/', NoteController.getAllNotes);
+    app.get('/page', NoteController.getNotesPage);
+    app.get('/:id', NoteController.getNote);
+    app.put('/:id', NoteController.updateNote);
+    app.delete('/:id', NoteController.deleteNote);
+    app.get('/search/:query', NoteController.searchNotes);}

@@ -1,6 +1,6 @@
 async function deleteNote(id) {
     try {
-        const response = await fetch(`http://localhost:8000/api/notes/${id}`, {
+        const response = await fetch(`${API_BASE_URL}/${id}`, {
             method: "DELETE",
             headers: {
                 "Content-Type": "application/json",

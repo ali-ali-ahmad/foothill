@@ -1,5 +1,7 @@
+require('dotenv').config();
+const dbHost = process.env.DB_HOST;
 const mongoose = require("mongoose");
-mongoose.connect("mongodb://127.0.0.1/note-keeping", {
+mongoose.connect(`mongodb:${dbHost}`, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
 })

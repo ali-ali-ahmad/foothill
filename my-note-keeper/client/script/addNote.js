@@ -4,7 +4,7 @@ async function addNewNote() {
         const content = document.getElementById("content").value.trim();
 
         if (title.length) {
-            const response = await fetch("http://localhost:8000/api/notes", {
+            const response = await fetch(API_BASE_URL, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",

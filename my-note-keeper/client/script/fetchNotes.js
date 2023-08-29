@@ -3,19 +3,20 @@ let totalPages = 0;
 const PAGE_LIMIT = 10;
 
 async function fetchNotes(query) {
-    const tableTitle = document.getElementById("table_title");
     try {
+        const tableTitle = document.getElementById("table_title");
+        // tableTitle.textContent = `All Notes`;
         let notes;
         let response;
 
         if (query) {
-            response = await fetch(`http://localhost:8000/api/notes/search/${query}`);
+            response = await fetch(`${API_BASE_URL}/search/${query}`);
             notes = await response.json();
             tableTitle.textContent = `Search Results for "${query}"`;
         } else {
-            response = await fetch(`http://localhost:8000/api/notes/page?page=${currentPage}`);
+            response = await fetch(`${API_BASE_URL}/page?page=${currentPage}`);
             notes = await response.json();
-            tableTitle.textContent = `All Notes`;
+            // tableTitle.textContent = `All Notes`;
         }
 
         noteMaker(notes);
@@ -29,7 +30,7 @@ async function allNotesCount() {
     try {
         const currentPageDisplay = document.getElementById("notesCountDisplay");
 
-        const response = await fetch("http://localhost:8000/api/notes");
+        const response = await fetch(API_BASE_URL);
         const notes = await response.json();
         currentPageDisplay.textContent = notes.length;
 
@@ -42,7 +43,7 @@ async function allNotesCount() {
 async function fetchNextPage() {
     try {
         currentPage++;
-        const response = await fetch(`http://localhost:8000/api/notes/page?page=${currentPage}`);
+        const response = await fetch(`${API_BASE_URL}/page?page=${currentPage}`);
         const nextPageNotes = await response.json();
 
         if (!nextPageNotes.length) {
@@ -67,7 +68,7 @@ async function fetchPreviousPage() {
         }
         currentPage--;
 
-        const response = await fetch(`http://localhost:8000/api/notes/page?page=${currentPage}`);
+        const response = await fetch(`${API_BASE_URL}/page?page=${currentPage}`);
         const previousPageNotes = await response.json();
         noteMaker(previousPageNotes);
         updateCurrentPageDisplay();

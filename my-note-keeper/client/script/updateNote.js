@@ -27,7 +27,7 @@ function editNote(id) {
 
 async function updateNote(id, title, content) {
     try {
-        const response = await fetch(`http://localhost:8000/api/notes/${id}`, {
+        const response = await fetch(`${API_BASE_URL}/${id}`, {
             method: "PUT",
             headers: {
                 "Content-Type": "application/json",
