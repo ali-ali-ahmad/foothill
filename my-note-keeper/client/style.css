@@ -109,3 +109,7 @@ input[type="submit"]:hover {
 .load_page {
     text-align: center;
 }
+
+#prevButton {
+    display: none;
+}

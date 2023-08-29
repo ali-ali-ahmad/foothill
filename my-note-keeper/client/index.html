@@ -10,7 +10,7 @@
     <script src="script/addNote.js"></script>
     <script src="script/deleteNote.js"></script>
     <script src="script/updateNote.js"></script>
-    <script src="script/loadPages.js"></script>
+    <!-- <script src="script/loadPages.js"></script> -->
     <title>My Note Keeper</title>
 </head>
 <body>
@@ -31,13 +31,13 @@
             </form>
         </div>
         <div class="note_display">
-            <h2>Added Notes</h2>
+            <h2 id="table_title">All Notes</h2>
             <div class="counter">
                 <div class="current_page">
                     Current Page: <span id="currentPageDisplay">1</span>
                 </div>
                 <div class="all_notes">
-                    All Notes: <span id="allNotesCountDisplay">1</span>
+                    All Notes: <span id="notesCountDisplay">1</span>
                 </div>
             </div>
             <table id="noteTable">
@@ -50,8 +50,8 @@
             </table>
         </div>
         <div class="load_page">
-            <input type="submit" value="Previous" onclick="fetchPreviousPage()">
-            <input type="submit" value="Next" onclick="fetchNextPage()">
+            <input id="prevButton" type="submit" value="Previous" onclick="fetchPreviousPage()">
+            <input id="nextButton" type="submit" value="Next" onclick="fetchNextPage()">
         </div>
     </main>
 </body>
