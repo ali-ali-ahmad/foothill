@@ -2,22 +2,10 @@ let currentPage = 1;
 let totalPages = 0;
 const PAGE_LIMIT = 10;
 
-async function fetchNotes(query) {
+async function fetchNotes() {
     try {
-        const tableTitle = document.getElementById("table_title");
-        // tableTitle.textContent = `All Notes`;
-        let notes;
-        let response;
-
-        if (query) {
-            response = await fetch(`${API_BASE_URL}/search/${query}`);
-            notes = await response.json();
-            tableTitle.textContent = `Search Results for "${query}"`;
-        } else {
-            response = await fetch(`${API_BASE_URL}/page?page=${currentPage}`);
-            notes = await response.json();
-            // tableTitle.textContent = `All Notes`;
-        }
+        const response = await fetch(`${API_BASE_URL}/page?page=${currentPage}`);
+        const notes = await response.json();
 
         noteMaker(notes);
         allNotesCount();
@@ -63,9 +51,6 @@ async function fetchNextPage() {
 
 async function fetchPreviousPage() {
     try {
-        if (currentPage === 1) {
-            return;
-        }
         currentPage--;
 
         const response = await fetch(`${API_BASE_URL}/page?page=${currentPage}`);
@@ -104,9 +89,6 @@ function updateButtonVisibility() {
         nextButton.style.display = "block";
     }
 }
-
-
-
 
 fetchNotes();
 

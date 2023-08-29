@@ -11,13 +11,14 @@
     <script src="script/addNote.js"></script>
     <script src="script/deleteNote.js"></script>
     <script src="script/updateNote.js"></script>
+    <script src="script/searchNote.js"></script>
     <title>My Note Keeper</title>
 </head>
 <body>
     <header>
         <h1>My Note Keeper</h1>
         <div class="search_note">
-            <input type="text" id="search-note" placeholder="Search Notes" oninput="fetchNotes(event.target.value)">
+            <input type="text" id="search-note" placeholder="Search Notes" oninput="searchNotes(event.target.value)">
             <i class="fa-solid fa-magnifying-glass fa-lg" style="cursor: pointer;"></i>
         </div>
     </header>
