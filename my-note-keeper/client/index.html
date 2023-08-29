@@ -19,7 +19,6 @@
         <h1>My Note Keeper</h1>
         <div class="search_note">
             <input type="text" id="search-note" placeholder="Search Notes" oninput="searchNotes(event.target.value)">
-            <i class="fa-solid fa-magnifying-glass fa-lg" style="cursor: pointer;"></i>
         </div>
     </header>
     <main class="container">
@@ -28,18 +27,20 @@
             <form id="noteForm">
                 <input type="text" id="title" placeholder="Title">
                 <input type="text" id="content" placeholder="Content">
-                <input type="submit" value="Add Note" onclick="addNewNote()">
+                <input type="submit" id="note_submit" value="Add Note" onclick="addNewNote()">
             </form>
         </div>
         <div class="note_display">
             <h2 id="table_title">All Notes</h2>
-            <div class="counter">
-                <div class="current_page">
-                    Current Page: <span id="currentPageDisplay">1</span>
-                </div>
-                <div class="all_notes">
-                    All Notes: <span id="notesCountDisplay">1</span>
-                </div>
+            <div id="page_controller">
+                <input id="prevButton" type="submit" value="&lt;" onclick="fetchPreviousPage()">
+                <p id="pageStart">1</p>
+                <p>/</p>
+                <p id="pageEnd">10</p>
+                <input id="nextButton" type="submit" value="&gt;" onclick="fetchNextPage()">
+                <p>of </p>
+                <p id="allNotesCount">21</p>
+                <p>notes</p>
             </div>
             <table id="noteTable">
                 <tr>
@@ -49,10 +50,6 @@
                     <th>Actions</th>
                 </tr>
             </table>
-        </div>
-        <div class="load_page">
-            <input id="prevButton" type="submit" value="Previous" onclick="fetchPreviousPage()">
-            <input id="nextButton" type="submit" value="Next" onclick="fetchNextPage()">
         </div>
     </main>
 </body>

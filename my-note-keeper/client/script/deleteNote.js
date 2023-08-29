@@ -11,6 +11,7 @@ async function deleteNote(id) {
             const rowToDelete = document.getElementById(id);
             if (rowToDelete) {
                 rowToDelete.remove();
+                allNotesCount();
             } else {
                 console.warn(`Note with ID ${id} not found in the DOM.`);
             }

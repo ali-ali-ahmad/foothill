@@ -16,13 +16,22 @@ async function fetchNotes() {
 
 async function allNotesCount() {
     try {
-        const currentPageDisplay = document.getElementById("notesCountDisplay");
+        const pageStart = document.getElementById("pageStart");
+        const pageEnd = document.getElementById("pageEnd");
+        const allNotesDisplay = document.getElementById("allNotesCount");
 
         const response = await fetch(API_BASE_URL);
         const notes = await response.json();
-        currentPageDisplay.textContent = notes.length;
 
         totalPages = Math.ceil(notes.length / PAGE_LIMIT);
+        allNotesDisplay.textContent = notes.length;
+        pageStart.textContent = ((currentPage - 1) * PAGE_LIMIT) + 1;
+        if (currentPage === totalPages) {
+            pageEnd.textContent = notes.length;
+        } else {
+            pageEnd.textContent = PAGE_LIMIT * currentPage;
+        }
+
     } catch (error) {
         console.error("An error occurred:", error);
     }
@@ -41,7 +50,7 @@ async function fetchNextPage() {
         }
 
         noteMaker(nextPageNotes);
-        updateCurrentPageDisplay();
+        allNotesCount();
         updateButtonVisibility();
     } catch (error) {
         console.error("An error occurred:", error);
@@ -56,20 +65,13 @@ async function fetchPreviousPage() {
         const response = await fetch(`${API_BASE_URL}/page?page=${currentPage}`);
         const previousPageNotes = await response.json();
         noteMaker(previousPageNotes);
-        updateCurrentPageDisplay();
+        allNotesCount();
         updateButtonVisibility();
     } catch (error) {
         console.error("An error occurred:", error);
     }
 
 }
-
-
-function updateCurrentPageDisplay() {
-    const currentPageDisplay = document.getElementById("currentPageDisplay");
-    currentPageDisplay.textContent = currentPage;
-}
-
 
 function updateButtonVisibility() {
     const prevButton = document.getElementById("prevButton");

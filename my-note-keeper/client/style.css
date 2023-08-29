@@ -1,39 +1,43 @@
-body {
+
+* {
     font-family: Arial, sans-serif;
-    background-color: #f4f4f4;
-    margin: 0;
-    padding: 0;
 }
 
 header {
-    background-color: burlywood;
-    height: 100px;
-    padding: 10px;
+    background-color: rgb(7, 7, 7);
     display: flex;
     justify-content: space-between;
     align-items: center;
     text-align: center;
-    flex-wrap: wrap;
-    padding-left: 40px;
-    padding-right: 40px;
+    padding: 0px 40px 0px 40px;
 }
 
 header h1 {
     text-align: center;
+    color: #ffffff;
+    width: fit-content;
+}
+
+#search-note {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    height: 30px;
+}
+
+.fa-magnifying-glass {
+    color: #c7c7c7;
+    display: none;
 }
 
 .container {
-    width: 90%;
-    margin: 20px auto;
+    margin: 20px;
     padding: 40px;
-    background-color: #fff;
     border-radius: 5px;
-    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.3);
+    box-shadow: 0px 0px 50px 0px rgba(0, 0, 0, 0.3);
     display: flex;
     flex-direction: column;
     align-items: center;
-    flex-wrap: wrap;
-    gap: 20px;
 }
 
 .add_note {
@@ -48,51 +52,14 @@ header h1 {
     gap: 10px;
 }
 
-.search_note {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-}
-
-.note_display {
-    flex: 2;
-    text-align: center;
-    width: 100%;
-}
-
-.counter {
-    display: flex;
-    justify-content: space-between;
-    margin: 0px 100px 0px 100px;
-}
-
-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 20px;
-}
-
-th,
-td {
+#title, #content {
     padding: 10px;
-    text-align: left;
-    border-bottom: 1px solid #ddd;
-}
-
-th {
-    background-color: #7a7a7a;
-}
-
-input[type="text"] {
-    width: 100%;
-    padding: 10px;
-    margin-bottom: 10px;
     border: 1px solid #ccc;
     border-radius: 4px;
     height: 30px;
 }
 
-input[type="submit"] {
+#note_submit {
     background-color: #007bff;
     color: #fff;
     padding: 10px 20px;
@@ -102,14 +69,70 @@ input[type="submit"] {
     height: 50px;
 }
 
-input[type="submit"]:hover {
-    background-color: #0056b3;
+.note_display {
+    text-align: center;
+    width: 100%;
 }
 
-.load_page {
+#page_controller {
+    display: flex;
     text-align: center;
+    align-items: center;
+    justify-content: end;
+    gap: 5px;
+}
+
+#page_controller > input {
+    color: rgb(0, 0, 0);
+    font-weight: 700;
+    font-size: larger;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    padding: 5px;
+}
+
+#page_controller > input:hover {
+    background-color: #000000;
+    color: #ffffff;
 }
 
 #prevButton {
     display: none;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th,
+td {
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+}
+
+th {
+    background-color: #7a7a7a;
+    text-align: center;
+}
+
+td:first-child,
+td:nth-child(2) {
+    text-align: left;
+}
+
+td:nth-child(3),
+td:nth-child(4) {
+    text-align: center;
+}
+
+@media (max-width: 768px) {
+    .add_note {
+        flex-direction: column;
+    }
+
+    #noteForm {
+        flex-direction: column;
+    }
 }
