@@ -1,6 +1,6 @@
 <h1>My Note Keeper</h1>
 
-<img scr="Screenshot.jpg"/>
+<img src="Screenshot.jpg"/>
 
 <h2>Running the app:</h2>
 
