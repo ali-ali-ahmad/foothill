@@ -1,0 +1,137 @@
+* {
+    margin: auto;
+    text-align: center;
+}
+
+header {
+    background-color: black;
+}
+
+header h1 {
+    color: white;
+    padding: 20px;
+}
+
+main {
+    margin-top: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.cal_buttons {
+    display: grid;
+    grid-gap: 10px;
+    grid-template:
+    "dis_scr dis_scr dis_scr dis_scr"
+    "clear clear clear devide"
+    "num_7 num_8 num_9 multiply"
+    "num_4 num_5 num_6 plus"
+    "num_1 num_2 num_3 minus"
+    "num_0 num_0 dot equal"
+}
+
+.cal_buttons input {
+    background-color: rgb(143, 143, 143);
+    width: 100px;
+    height: 100px;
+    font-weight: bold;
+    font-size: larger;
+
+}
+
+.display_screen {
+    grid-area: dis_scr;
+    width: 100%;
+    background-color: black;
+    height: 100px;
+    display: flex;
+}
+
+#operatortion_screen {
+    color: white;
+    margin-top: 20px;
+    font-size: 300%;
+    flex: 5;
+    text-align: left;
+    margin-left: 10px;
+    width: fit-content;
+}
+
+#result_screen {
+    color: white;
+    margin-top: 20px;
+    font-size: 300%;
+    flex: 2;
+    text-align: left;
+}
+
+#clear {
+    grid-area: clear;
+    width: 100%;
+}
+
+#devide {
+    grid-area: devide;
+}
+
+#multiply {
+    grid-area: multiply;
+}
+
+#plus {
+    grid-area: plus;
+}
+
+#minus {
+    grid-area: minus;
+}
+
+#equal {
+    grid-area: equal;
+}
+
+#num_1 {
+    grid-area: num_1;
+}
+
+#num_2 {
+    grid-area: num_2;
+}
+
+#num_3 {
+    grid-area: num_3;
+}
+
+#num_4 {
+    grid-area: num_4;
+}
+
+#num_5 {
+    grid-area: num_5;
+}
+
+#num_6 {
+    grid-area: num_6;
+}
+
+#num_7 {
+    grid-area: num_7;
+}
+
+#num_8 {
+    grid-area: num_8;
+}
+
+#num_9 {
+    grid-area: num_9;
+}
+
+#num_0 {
+    grid-area: num_0;
+    width: 100%;
+}
+
+#dot {
+    grid-area: dot;
+}

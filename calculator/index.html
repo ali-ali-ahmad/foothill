@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <script src="script/operations.js"></script>
+    <script src="script/UITest.js"></script>
+    <title>Simple Calculator</title>
+</head>
+<body>
+    <header>
+        <h1>Simple Calculator</h1>
+    </header>
+    <main>
+        <div class="cal_buttons">
+            <div class="display_screen">
+                <h4 id="operatortion_screen">0</h4>
+                <h4 id="result_screen">=</h4>
+            </div>
+            <input onclick="clearInput()" id="clear" type="submit" value="Clear">
+            <input onclick="methodEntry('/')" id="devide" type="submit" value="/">
+            <input onclick="methodEntry('*')" id="multiply" type="submit" value="*">
+            <input onclick="methodEntry('+')" id="plus" type="submit" value="+">
+            <input onclick="methodEntry('-')" id="minus" type="submit" value="-">
+            <input onclick="results()" id="equal" type="submit" value="=">
+            <input onclick="numberEntry(1)" id="num_1" type="submit" value="1">
+            <input onclick="numberEntry(2)" id="num_2" type="submit" value="2">
+            <input onclick="numberEntry(3)" id="num_3" type="submit" value="3">
+            <input onclick="numberEntry(4)" id="num_4" type="submit" value="4">
+            <input onclick="numberEntry(5)" id="num_5" type="submit" value="5">
+            <input onclick="numberEntry(6)" id="num_6" type="submit" value="6">
+            <input onclick="numberEntry(7)" id="num_7" type="submit" value="7">
+            <input onclick="numberEntry(8)" id="num_8" type="submit" value="8">
+            <input onclick="numberEntry(9)" id="num_9" type="submit" value="9">
+            <input onclick="numberEntry(0)" id="num_0" type="submit" value="0">
+            <input onclick="numberEntry('.')" id="dot" type="submit" value=".">
+        </div>
+    </main>
+</body>
+</html>
