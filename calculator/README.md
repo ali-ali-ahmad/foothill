@@ -1,6 +1,6 @@
 <h1>Simple Calculator</h1>
 
-<img src="CalculatorScreenshot.jpg"/>
+<img src="Screenshot.jpg"/>
 
 <h2>Overview</h2>
 <p>Welcome to <strong>**Calculator App**</strong>, a straightforward web application designed for testing purposes. This project provides a simple calculator with basic arithmetic operations.</p>
