@@ -1,4 +1,3 @@
-
 function calc(...args) {
     
     const operators = ['*', '/', '-', '+'];
@@ -78,7 +77,5 @@ function calc(...args) {
 
     return args[0];
 }
-
-// export default calc;
 
 module.exports = calc;

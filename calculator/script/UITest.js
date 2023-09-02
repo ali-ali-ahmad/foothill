@@ -1,5 +1,3 @@
-// import calc from './functions.js';
-
 let number;
 let array = [];
 
@@ -14,14 +12,11 @@ function numberEntry(value) {
     }
 
     operatortionDisplay();
-
 }
-
 
 function methodEntry(value) {
 
     const lastItem = array[array.length - 1];
-
 
     if (!array.length) {
         return
@@ -48,7 +43,6 @@ function results() {
     array = [results];
     resultScreen.textContent = `= ${results}`;
     number = null;
-
 }
 
 function operatortionDisplay() {
@@ -58,7 +52,6 @@ function operatortionDisplay() {
     for (let i = 0; i < array.length; i++) {
         operatortionScreen.textContent += array[i];
     }
-
 }
 
 function clearInput() {
@@ -66,14 +59,7 @@ function clearInput() {
     const resultScreen = document.getElementById('result_screen');
     operatortionScreen.textContent = '0';
     resultScreen.textContent = '=';
+    
     number = null;
     array = [];
 }
-
-
-// export default {
-//     clearInput,
-//     results,
-//     methodEntry,
-//     numberEntry
-// }

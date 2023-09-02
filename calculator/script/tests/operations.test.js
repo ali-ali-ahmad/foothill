@@ -80,5 +80,4 @@ describe("Calculator", () => {
     it("should throw an error for two numbers after each other", () => {
         expect(() => calc(5, 5, "-", 3)).toThrow("Invalid input type, two numbers with no Operator.");
     });
-
 });
