@@ -37,10 +37,6 @@ function calc(...args) {
             return num1;
         }
         switch (operator) {
-            case "+":
-                return num1 + num2;
-            case "-":
-                return num1 - num2;
             case "*":
                 return num1 * num2;
             case "/":
@@ -48,6 +44,10 @@ function calc(...args) {
                     throw new Error("Division by zero.");
                 }
                 return num1 / num2;
+            case "-":
+                return num1 - num2;
+            default:
+                return num1 + num2;
         }
     }
 

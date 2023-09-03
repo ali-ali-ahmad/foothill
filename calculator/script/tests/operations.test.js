@@ -36,7 +36,7 @@ describe("Calculator", () => {
         expect(calc(3.5, "*", 2)).toBe(7);
     });
 
-    //   Test case: Order of operations
+    // Test case: Order of operations
     it("should follow the correct order of operations", () => {
         expect(calc(2, "+", 3, "*", 4)).toBe(14);
     });
@@ -54,6 +54,11 @@ describe("Calculator", () => {
     // Test case: Input bigger than 1000
     it("Should Ignore the numbers bigger than 1000", () => {
         expect(calc(1002, "+", 5, "-", 2000, "*", 4)).toBe(1);
+    });
+
+    // Test case: Input bigger than 1000
+    it("Should Ignore the numbers bigger than 1000", () => {
+        expect(calc(5, "+", 1002)).toBe(5);
     });
 
     // Test case: first or last input is not a number
