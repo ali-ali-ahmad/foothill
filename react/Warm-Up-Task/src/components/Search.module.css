@@ -1,0 +1,17 @@
+.container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.searchIcon {
+    width: 20px;
+    height: 20px;
+}
+
+.searchInput {
+    padding: 10px;
+    width: 250px;
+
+}
