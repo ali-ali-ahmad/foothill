@@ -147,7 +147,7 @@ export const profiles = {
     },
     "@typescript": {
         'name': 'TypeScript',
-        'description': 'A typed superset of JavaScript',
+        'description': 'TypeScript is a language for applicatio-scale JavaScript development. its a typed superset of JavaScript that compiles to plain JavaScript.',
         'joinedDate': 'October 2012',
         'webLink': 'typescriptlang.org',
         'profilePicture': 'https://www.typescripttutorial.net/wp-content/uploads/2020/04/favicon.png',
@@ -176,7 +176,7 @@ export const profiles = {
     },
     "@tailwindcss": {
         'name': 'Tailwind CSS',
-        'description': 'A utility-first CSS framework',
+        'description': 'The utlity-first CSS framework. Rapidly build modern websites, without ever leaving your HTML.',
         'joinedDate': 'April 2017',
         'webLink': 'tailwindcss.com',
         'profilePicture': 'https://bourhaouta.gallerycdn.vsassets.io/extensions/bourhaouta/tailwindshades/0.0.5/1592520164095/Microsoft.VisualStudio.Services.Icons.Default',
@@ -205,7 +205,7 @@ export const profiles = {
     },
     "@freeCodeCamp": {
         'name': 'freeCodeCamp',
-        'description': 'Learn to code for free',
+        'description': 'We are community of millions of people who are building new skills and getting new jobs together.A 501(c)(3) public charity. Tweeted by @abberyrenn',
         'joinedDate': 'December 2014',
         'webLink': 'freecodecamp.org',
         'profilePicture': 'https://images.crunchbase.com/image/upload/c_lpad,f_auto,q_auto:eco,dpr_1/ikqra03zdnggljdu5vv0',
