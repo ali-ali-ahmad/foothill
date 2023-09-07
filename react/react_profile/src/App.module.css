@@ -1,0 +1,22 @@
+.container {
+  text-align: center;
+  display: flex;
+  justify-content: space-between;
+  background-color: black;
+  color: white;
+  height: 1000px;
+}
+
+.leftSide {
+  flex: 2;
+}
+
+.centerPage {
+  flex: 4;
+  border: 1px solid grey;
+}
+
+
+.rightSide {
+  flex: 3;
+}
