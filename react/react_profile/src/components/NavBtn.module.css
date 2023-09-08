@@ -1,0 +1,11 @@
+.container {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 20px;
+    padding-left: 20px;
+    cursor: pointer;
+    width: fit-content;
+    text-decoration: none;
+    color: white;
+}
