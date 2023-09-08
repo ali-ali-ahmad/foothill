@@ -9,6 +9,8 @@
 
 .leftSide {
   flex: 2;
+  position: relative;
+  height: 750px;
 }
 
 .centerPage {

@@ -34,7 +34,7 @@ export const profiles = {
         'description': 'Front-end Developer | JavaScript Enthusiast',
         'joinedDate': 'September 2015',
         'webLink': 'mohamaddewiekat.com',
-        'profilePicture': 'hhttps://xsgames.co/randomusers/assets/avatars/male/46.jpg',
+        'profilePicture': 'https://xsgames.co/randomusers/assets/avatars/male/46.jpg',
         'profileCover': 'https://example.com/cover/mohamad-dewiekat-cover.png',
         'postsNumber': 120,
         'posts': [
