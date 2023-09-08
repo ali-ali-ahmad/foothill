@@ -1,6 +1,7 @@
 import React from 'react';
 import NavBtn from "../components/NavBtn";
 import { navBtnInfo } from '../data/navBtnInfo';
+import PostBtn from '../components/PostBtn';
 
 
 function LeftSideView(props) {
@@ -15,6 +16,7 @@ function LeftSideView(props) {
                     link={navBtnInfo[key].link}
                 />
             ))}
+            <PostBtn />
         </div>
     );
 }
