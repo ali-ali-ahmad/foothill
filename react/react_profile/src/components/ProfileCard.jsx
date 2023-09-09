@@ -1,4 +1,4 @@
-import styles from './ProfileCard.module.css';
+import styles from './css/ProfileCard.module.css';
 import profileInfo from '../icons/profileInfo.svg';
 
 function ProfileCard(props) {

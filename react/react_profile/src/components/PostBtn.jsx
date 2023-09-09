@@ -1,4 +1,4 @@
-import styles from './PostBtn.module.css';
+import styles from './css/PostBtn.module.css';
 
 function PostBtn(props) {
     return (

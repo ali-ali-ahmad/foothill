@@ -1,14 +1,14 @@
 .postBtn {
     color: white;
     background-color: #1d9bf0;
-    width: 250px;
+    width: 200px;
     border-radius: 30px;
     border: 1px solid #1d9bf0;
-    padding: 15px;
+    padding: 10px;
     font-size: larger;
     font-weight: 700;
-    margin-top: 20px;
-    margin-left: 20px;
+    margin-top: 10px;
+    margin-left: 10px;
     float: left;
     cursor: pointer;
 }

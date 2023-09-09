@@ -4,13 +4,16 @@
   justify-content: space-between;
   background-color: black;
   color: white;
-  height: 1000px;
+  /* height: 1000px; */
 }
 
 .leftSide {
   flex: 2;
   position: relative;
-  height: 750px;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 .centerPage {
