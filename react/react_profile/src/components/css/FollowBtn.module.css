@@ -1,0 +1,17 @@
+.followBtn {
+    color: black;
+    background-color: #eff3f4;
+    border-radius: 20px;
+    padding: 10px 15px ;
+    border: 1px solid #eff3f4;
+    font-weight: 700;
+}
+
+.followingBtn {
+    background-color: rgb(0, 0, 0);
+    color: white;
+    border-radius: 20px;
+    padding: 10px 15px ;
+    border: 1px solid #50606d;
+    font-weight: 700;
+}
