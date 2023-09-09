@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import ProfileHeader from "../components/ProfileHeader";
 import { profiles } from '../data/users';
+import TabsContainer from '../components/TabsContainer';
 
 function UserProfileView(props) {
     const [currentId, setCurrentId] = useState(1);
@@ -20,6 +21,9 @@ function UserProfileView(props) {
             <ProfileHeader 
                 profile={selectedProfile}
                 matchedFollowers={matchedFollowers}
+            />
+            <TabsContainer 
+                profile={selectedProfile}
             />
         </div>
     );
