@@ -1,0 +1,131 @@
+.accountName {
+    display: flex;
+    gap: 20px;
+    margin-left: 10px;
+}
+
+.textContent {
+    line-height: 1px;
+    text-align: left;
+}
+
+.textContent p {
+    color: gray;
+}
+
+.profileInfo {
+    position: relative;
+}
+
+.coverPhoto {
+    width: 100%;
+    height: 200px;
+}
+
+.profilePhoto {
+    /* width: 100px; */
+    width: 20%;
+    position: absolute;
+    left: 10px;
+    bottom: -28%;
+    border-radius: 100%;
+    border: 3px solid black;
+}
+
+.profileBtns {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 10px;
+    margin-right: 10px;
+    margin-top: 10px;
+}
+
+.moreBtn {
+    border: 1px solid #50606d;
+    border-radius: 100%;
+    padding: 5px;
+}
+
+.notificationBtn {
+    border: 1px solid #50606d;
+    border-radius: 100%;
+    padding: 5px;
+}
+
+.accountName2 {
+    line-height: 0px;
+    text-align: left;
+}
+
+.profileContent {
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+    margin-top: 30px;
+    margin-left: 10px;
+    line-height: 0px;
+}
+
+.accountName2 h3 {
+
+}
+
+.accountName2 h5 {
+    color: grey;
+}
+
+.linkAndDate {
+    display: flex;
+    align-items: flex-start;
+    gap: 20px;
+}
+
+.linkAndDate a {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    text-decoration: none;
+}
+
+.linkAndDate div {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    color: rgb(128, 128, 128);
+}
+
+.followingInfo {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    font-weight: 500;
+}
+
+.followingInfo span {
+    color: rgb(128, 128, 128);
+}
+
+.matchedFollowers {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 20px;
+    margin-left: 10px;
+}
+
+.profilePictures img {
+    width: 25px;
+    border-radius: 100%;
+    margin-left: -10px;
+}
+
+.followersNames {
+    display: flex;
+    color: grey;
+    align-items: center;
+}
+
+.followersNames > p {
+    margin-right: 4px;
+}
