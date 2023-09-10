@@ -7,3 +7,12 @@
     line-height: 0px;
     padding: 10px;
 }
+
+.container p {
+    font-size: 13px;
+}
+
+.container p:hover {
+    cursor: pointer;
+    text-decoration: underline;
+}

@@ -5,6 +5,7 @@
     padding: 10px 15px ;
     border: 1px solid #eff3f4;
     font-weight: 700;
+    cursor: pointer;
 }
 
 .followingBtn {
@@ -14,4 +15,13 @@
     padding: 10px 15px ;
     border: 1px solid #50606d;
     font-weight: 700;
+    cursor: pointer;
 }
+
+.followingBtn:hover {
+    background-color: rgb(87, 1, 1);
+    color: red;
+    border: 1px solid red;
+}
+
+

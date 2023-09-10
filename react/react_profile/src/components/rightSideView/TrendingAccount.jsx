@@ -1,6 +1,7 @@
 import TrendingAccountCard from './TrendingAccountCard';
 import styles from './css/TrendingAccount.module.css';
 import { trendingAccounts } from '../../data/trendingAccounts';
+import ShowMoreBtn from '../reusable/ShowMoreBtn';
 
 function TrendingAccount(props) {
     return (
@@ -15,6 +16,7 @@ function TrendingAccount(props) {
                         posts={trendingAccounts[key].posts}
                     />
                 ))}
+                <ShowMoreBtn />
             </div>
         </div>
     );

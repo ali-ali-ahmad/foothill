@@ -8,21 +8,27 @@
 }
 
 .profileImg {
-    width: 45px;
+    width: 40px;
     border-radius: 100%;
     cursor: pointer;
 }
 
 .userInfo {
-    line-height: 0px;
+    line-height: 4px;
     cursor: pointer;
+    text-align: left;
 }
 
 .userInfo p {
+    font-size: 15px;
+}
+
+.userName {
     color: grey;
 }
 
 .infologo {
     margin-left: 10px;
     cursor: pointer;
+    width: 24px;
 }

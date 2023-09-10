@@ -4,10 +4,15 @@
     padding: 10px;
     justify-content: space-between;
     text-align: left;
+    transition: background-color 0.3s ease, cursor 0.3s ease; 
+}
+.container:hover {
+    cursor: pointer;
+    background-color: #1d1f23;
 }
 
 .accountInfo {
-    width: 100%;
+    /* width: 100%; */
     display: flex;
     justify-content: left;
     align-items: center;
@@ -24,6 +29,10 @@
     align-items: flex-start;
     flex-direction: column;
     line-height: 1px;
+}
+
+.name:hover {
+    text-decoration: underline;
 }
 
 .userName {

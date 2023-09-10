@@ -11,7 +11,7 @@ function MightLikeCard(props) {
             <div className={styles.accountInfo}>
                 <img src={selectedProfile.profilePicture} alt="Profile" />
                 <div className={styles.profileName}>
-                    <p>{selectedProfile.name}</p>
+                    <p className={styles.name}>{selectedProfile.name}</p>
                     <p className={styles.userName}>{selectedProfile.userName}</p>
                 </div>
             </div>

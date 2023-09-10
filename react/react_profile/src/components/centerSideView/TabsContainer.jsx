@@ -7,7 +7,6 @@ function TabsContainer(props){
 
     const active = {
         borderBottom: '4px solid #1d9bf0',
-        borderRadius: '5px',
         color: 'rgb(255, 255, 255)',
     }
 
@@ -48,7 +47,7 @@ function TabsContainer(props){
                     onClick={(e) => handleTabClick('Likes', e)}
                 />
             </div>
-            <div className="tab-content">
+            <div className={styles.tabContent}>
                 {activeTab === 'Post' && <PostContainer profile={props.profile}/>}
                 {activeTab === 'Replies' && <div>Content for Replies</div>}
                 {activeTab === 'Media' && <div>Content for Media</div>}

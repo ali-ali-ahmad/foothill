@@ -1,9 +1,18 @@
 .container input {
     margin: 10px 10px 10px 0px;
-    padding: 10px;
+    padding: 20px;
     border: none;
     background-color: #16181c;
+    background-color: transparent;
     color: #1e8dd8;
     font-weight: 600;
     cursor: pointer;
+    width: 100%;
+    transition: background-color 0.3s ease, cursor 0.3s ease;
+    text-align: left;
+}
+
+.container input:hover {
+    cursor: pointer;
+    background-color: #1d1f23;
 }
