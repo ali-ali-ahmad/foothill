@@ -15,7 +15,6 @@ function FollowBtn(props) {
     return (
         <input 
             className={followStatus? styles.followingBtn: styles.followBtn} 
-            // className={styles.followBtn} 
             type='submit' 
             value={followStatus? 'Following': 'Follow'}
             onClick={handleClick}

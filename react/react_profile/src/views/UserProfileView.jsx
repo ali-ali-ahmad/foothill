@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 import ProfileHeader from "../components/ProfileHeader";
 import { profiles } from '../data/users';
 import TabsContainer from '../components/TabsContainer';
+import SuggestedAccounts from '../components/SuggestedAccounts';
 
 function UserProfileView(props) {
     const [currentId, setCurrentId] = useState(1);
@@ -25,6 +26,7 @@ function UserProfileView(props) {
             <TabsContainer 
                 profile={selectedProfile}
             />
+            <SuggestedAccounts  currentProfile={comparingProfile}/>
         </div>
     );
 }

@@ -1,0 +1,61 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 10px;
+    text-align: left;
+}
+
+.matchedFollowers {
+    display: flex;
+    gap: 10px;
+    padding-left: 20px;
+    margin-bottom: -10px;
+}
+
+.matchedFollowers img {
+    width: 18px;
+}
+
+.followersNames {
+    display: flex;
+}
+
+.followersNames p {
+    font-size: small;
+}
+
+.accountInfo {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.accountInfo > div {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.accountInfo img {
+    width: 40px;
+    height: 40px;
+    border-radius: 100%;
+    /* float: right; */
+}
+
+.profileName {
+    text-align: left;
+    line-height: 1px;
+}
+
+.userName {
+    color: grey;
+}
+
+.container > p {
+    font-size: small;
+    padding: 0px 0px 0px 50px;
+    margin: 0;
+}

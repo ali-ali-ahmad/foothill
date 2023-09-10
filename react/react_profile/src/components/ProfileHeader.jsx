@@ -4,7 +4,7 @@ import moreHoriz from '../icons/moreHoriz.svg';
 import link from '../icons/link.svg';
 import calendar from '../icons/calendar.svg';
 import notificationAdd from '../icons/notificationAdd.svg';
-import FollowBtn from './followBtn';
+import FollowBtn from './FollowBtn';
 import { profiles } from '../data/users';
 
 function ProfileHeader(props) {
