@@ -7,9 +7,8 @@ import TrendingAccount from "../components/rightSideView/TrendingAccount";
 
 function RightSide(props) {
 
-
     return (
-        <div className={props.className}>
+        <div className={props.className} >
             <SearchEngine />
             <MightLike />
             <TrendingAccount />

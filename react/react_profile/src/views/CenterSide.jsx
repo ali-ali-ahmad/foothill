@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useRef} from 'react';
 import ProfileHeader from "../components/centerSideView/ProfileHeader";
 import { profiles } from '../data/users';
 import TabsContainer from '../components/centerSideView/TabsContainer';
@@ -6,6 +6,7 @@ import SuggestedAccounts from '../components/centerSideView/SuggestedAccounts';
 
 function CenterSide(props) {
     const [currentId, setCurrentId] = useState(1);
+
     let matchedFollowers = [];
 
     const selectedProfile = profiles.find(profile => profile.id === currentId);
