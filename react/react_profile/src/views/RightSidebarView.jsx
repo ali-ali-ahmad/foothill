@@ -1,8 +1,9 @@
+import SearchEngine from "../components/SearchEngine";
 
 function RightSideView(props) {
     return (
         <div className={props.className}>
-            <h1>Right Side View</h1>
+            <SearchEngine />
         </div>
     );
 }
