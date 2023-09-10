@@ -5,6 +5,7 @@
   background-color: black;
   color: white;
   height: 100vh;
+  position: relative;
 }
 
 .leftSide {
@@ -33,4 +34,41 @@
   width: 0rem;
 }
 
+.MobileView {
+  display: none;
+}
+
+@media (max-width: 1281px) {
+  .leftSide {
+    width: 72px;
+  }
+}
+
+@media (max-width: 1094px) {
+  .rightSide {
+      width: 288px;
+  }
+}
+
+@media (max-width: 1004px) {
+  .rightSide {
+      display: none;
+  }
+}
+
+@media (max-width: 499px) {
+  .leftSide {
+      display: none;
+  }
+
+  .MobileView {
+    display: flex;
+    width: 99%;
+    padding: 10px;
+    justify-content: space-evenly;
+    position: fixed;
+    bottom: 0px;
+    background-color: black;
+  }
+}
 

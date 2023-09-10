@@ -153,6 +153,7 @@
 
 .followersNames {
     display: flex;
+    flex-wrap: wrap;
     color: grey;
     align-items: center;
 }

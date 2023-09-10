@@ -4,7 +4,14 @@
     justify-content: flex-start;
     gap: 10px;
     align-items: center;
-    padding: 10px;
+    transition: background-color 0.3s ease, cursor 0.3s ease; 
+    padding: 0px 10px 0px 10px;
+    border-radius: 30px;
+    margin-bottom: 10px;
+}
+
+.container:hover {
+    background-color: #181818;
 }
 
 .profileImg {
@@ -31,4 +38,11 @@
     margin-left: 10px;
     cursor: pointer;
     width: 24px;
+}
+
+@media (max-width: 1281px) {
+    .userInfo,
+    .infologo {
+        display: none;
+    }
 }

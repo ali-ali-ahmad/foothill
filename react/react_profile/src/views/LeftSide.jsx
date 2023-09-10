@@ -5,7 +5,7 @@ import PostBtn from '../components/leftSideView/PostBtn';
 import ProfileCard from '../components/leftSideView/ProfileCard';
 import { profiles } from '../data/users';
 import TwitterXLogo from '../icons/TwitterXLogo.jpg';
-import styles from './LeftSide.module.css';
+import styles from './css/LeftSide.module.css';
 
 function LeftSide(props) {
     const [currentId, setCurrentId] = useState(2);

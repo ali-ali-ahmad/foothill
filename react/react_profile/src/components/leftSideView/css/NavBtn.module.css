@@ -8,5 +8,18 @@
     text-decoration: none;
     color: white;
     height: 45px;
-    font-size: large;
+    font-size: 20px;
+    transition: background-color 0.3s ease, cursor 0.3s ease; 
+    /* padding: 0px 20px 0px 0px; */
+    border-radius: 30px;
+}
+
+.container:hover {
+    background-color: #181818;
+}
+
+@media (max-width: 1281px) {
+    .container p {
+        display: none;
+    }
 }

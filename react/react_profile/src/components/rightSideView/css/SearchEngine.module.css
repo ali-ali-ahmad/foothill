@@ -27,3 +27,9 @@
     color: #FFFFFF;
 }
 
+@media (max-width: 1094px) {
+    .container {
+        width: 270px;
+    }
+}
+

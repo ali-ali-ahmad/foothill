@@ -11,3 +11,24 @@
     float: left;
     cursor: pointer;
 }
+
+.postBtnLogo {
+    display: none;
+    color: white;
+    background-color: #1d9bf0;
+    border-radius: 100%;
+    padding: 10px;
+    cursor: pointer;
+    margin-top: 10px;
+    text-align: center;
+}
+
+@media (max-width: 1281px) {
+    .postBtnLogo {
+        display: flex;
+    }
+
+    .postBtn {
+        display: none;
+    }
+}

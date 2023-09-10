@@ -3,6 +3,7 @@ import LeftSide from './views/LeftSide';
 import RightSide from './views/RightSide';
 import CenterSide from './views/CenterSide';
 import styles from './App.module.css';
+import MobileNavBtns from './views/MobileNavBtns';
 
 function App() {
     const firstDivRef = useRef();
@@ -25,6 +26,7 @@ function App() {
             <div className={styles.rightSide} onScroll={handleScrollSecond} ref={secondDivRef}>
                 <RightSide  />
             </div>
+            <MobileNavBtns className={styles.MobileView}/>
         </div>
     );
 }
