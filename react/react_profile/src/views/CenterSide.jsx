@@ -1,4 +1,4 @@
-import React, {useState, useRef} from 'react';
+import React, {useState} from 'react';
 import ProfileHeader from "../components/centerSideView/ProfileHeader";
 import { profiles } from '../data/users';
 import TabsContainer from '../components/centerSideView/TabsContainer';

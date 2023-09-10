@@ -1,5 +1,3 @@
-
-// import NavBtn from "../components/leftSideView/NavBtn";
 import { navBtnInfo } from '../data/navBtnInfo';
 import PostBtn from '../components/leftSideView/PostBtn';
 import styles from './css/MobileNavBtns.module.css';

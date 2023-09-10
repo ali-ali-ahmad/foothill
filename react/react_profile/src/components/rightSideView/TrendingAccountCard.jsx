@@ -5,7 +5,6 @@ import moreHoriz from '../../icons/moreHoriz.svg';
 function TrendingAccountCard(props) {
     const {title, category, posts} = props;
 
-
     return (
         <div className={styles.container}>
             <div>

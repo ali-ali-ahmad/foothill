@@ -1,6 +1,4 @@
-.container {
-    /* position: relative; */
-}
+
 .accountName {
     display: flex;
     gap: 10px;
@@ -33,7 +31,6 @@
 }
 
 .profilePhoto {
-    /* width: 100px; */
     width: 20%;
     position: absolute;
     left: 10px;
@@ -85,10 +82,6 @@
     margin-top: 30px;
     margin-left: 10px;
     line-height: 0px;
-}
-
-.accountName2 h3 {
-
 }
 
 .accountName2 h5 {

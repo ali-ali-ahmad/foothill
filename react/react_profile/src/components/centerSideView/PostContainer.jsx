@@ -1,4 +1,3 @@
-
 import repost from '../../icons/repost.svg';
 import moreHoriz from '../../icons/moreHoriz.svg';
 import comment from '../../icons/comment.svg';

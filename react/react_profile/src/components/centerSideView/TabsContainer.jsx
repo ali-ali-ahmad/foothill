@@ -19,28 +19,24 @@ function TabsContainer(props){
         <div>
             <div className={styles.tabs}>
                 <input
-                    className={`tab ${activeTab === 'Post' ? 'active' : ''}`}
                     type="button"
                     value="Post"
                     style={activeTab === 'Post' ? active : null}
                     onClick={(e) => handleTabClick('Post', e)}
                 />
                 <input
-                    className={`tab ${activeTab === 'Replies' ? 'active' : ''}`}
                     type="button"
                     value="Replies"
                     style={activeTab === 'Replies' ? active : null}
                     onClick={(e) => handleTabClick('Replies', e)}
                 />
                 <input
-                    className={`tab ${activeTab === 'Media' ? 'active' : ''}`}
                     type="button"
                     value="Media"
                     style={activeTab === 'Media' ? active : null}
                     onClick={(e) => handleTabClick('Media', e)}
                 />
                 <input
-                    className={`tab ${activeTab === 'Likes' ? 'active' : ''}`}
                     type="button"
                     value="Likes"
                     style={activeTab === 'Likes' ? active : null}

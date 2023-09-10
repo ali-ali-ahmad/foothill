@@ -1,4 +1,3 @@
-
 import Footer from "../components/rightSideView/Footer";
 import MightLike from "../components/rightSideView/MightLike";
 import SearchEngine from "../components/rightSideView/SearchEngine";
