@@ -1,0 +1,12 @@
+.container {
+    background-color: #16181c;
+    border-radius: 10px;
+    text-align: left;
+}
+
+.container h2 {
+    padding-top: 10px;
+    margin-left: 10px;
+
+}
+

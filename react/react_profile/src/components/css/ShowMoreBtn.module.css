@@ -1,0 +1,9 @@
+.container input {
+    margin: 10px 10px 10px 0px;
+    padding: 10px;
+    border: none;
+    background-color: #16181c;
+    color: blue;
+    font-weight: 600;
+    cursor: pointer;
+}
