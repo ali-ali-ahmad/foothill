@@ -1,5 +1,5 @@
 import MightLikeCard from './MightLikeCard';
-import ShowMoreBtn from './ShowMoreBtn';
+import ShowMoreBtn from '../reusable/ShowMoreBtn';
 import styles from './css/MightLike.module.css';
 
 function MightLike(props) {

@@ -1,17 +1,13 @@
 import React, {useState} from 'react';
-import NavBtn from "../components/NavBtn";
+import NavBtn from "../components/leftSideView/NavBtn";
 import { navBtnInfo } from '../data/navBtnInfo';
-import PostBtn from '../components/PostBtn';
-import ProfileCard from '../components/ProfileCard';
+import PostBtn from '../components/leftSideView/PostBtn';
+import ProfileCard from '../components/leftSideView/ProfileCard';
 import { profiles } from '../data/users';
 import TwitterXLogo from '../icons/TwitterXLogo.jpg';
-import styles from './LeftSideBarView.module.css';
+import styles from './LeftSide.module.css';
 
-
-
-
-
-function LeftSideView(props) {
+function LeftSide(props) {
     const [currentId, setCurrentId] = useState(2);
 
     const selectedProfile = profiles.find(profile => profile.id === currentId);
@@ -47,4 +43,4 @@ function LeftSideView(props) {
     );
 }
 
-export default LeftSideView;
+export default LeftSide;

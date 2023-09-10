@@ -1,5 +1,5 @@
 import styles from './css/ProfileCard.module.css';
-import profileInfo from '../icons/profileInfo.svg';
+import profileInfo from '../../icons/profileInfo.svg';
 
 function ProfileCard(props) {
     return (

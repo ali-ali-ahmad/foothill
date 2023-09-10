@@ -1,7 +1,7 @@
 import styles from './css/AccountCard.module.css';
-import profileIcon from '../icons/profile.svg';
-import { profiles } from '../data/users';
-import FollowBtn from './FollowBtn';
+import profileIcon from '../../icons/profile.svg';
+import { profiles } from '../../data/users';
+import FollowBtn from '../reusable/FollowBtn';
 
 
 function AccountCard(props) {

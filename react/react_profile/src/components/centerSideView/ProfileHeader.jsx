@@ -1,11 +1,11 @@
 import styles from './css/ProfileHeader.module.css';
-import backArrow from '../icons/backArrow.svg';
-import moreHoriz from '../icons/moreHoriz.svg';
-import link from '../icons/link.svg';
-import calendar from '../icons/calendar.svg';
-import notificationAdd from '../icons/notificationAdd.svg';
-import FollowBtn from './FollowBtn';
-import { profiles } from '../data/users';
+import backArrow from '../../icons/backArrow.svg';
+import moreHoriz from '../../icons/moreHoriz.svg';
+import link from '../../icons/link.svg';
+import calendar from '../../icons/calendar.svg';
+import notificationAdd from '../../icons/notificationAdd.svg';
+import FollowBtn from '../reusable/FollowBtn';
+import { profiles } from '../../data/users';
 
 function ProfileHeader(props) {
     const { profile, matchedFollowers } = props;

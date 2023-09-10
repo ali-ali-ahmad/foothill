@@ -1,10 +1,10 @@
 
-import repost from '../icons/repost.svg';
-import moreHoriz from '../icons/moreHoriz.svg';
-import comment from '../icons/comment.svg';
-import heart from '../icons/heart.svg';
-import insight from '../icons/insight.svg';
-import upload from '../icons/upload.svg';
+import repost from '../../icons/repost.svg';
+import moreHoriz from '../../icons/moreHoriz.svg';
+import comment from '../../icons/comment.svg';
+import heart from '../../icons/heart.svg';
+import insight from '../../icons/insight.svg';
+import upload from '../../icons/upload.svg';
 import styles from './css/PostContainer.module.css';
 
 

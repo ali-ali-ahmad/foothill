@@ -1,5 +1,5 @@
 import styles from './css/TrendingAccountCard.module.css';
-import moreHoriz from '../icons/moreHoriz.svg';
+import moreHoriz from '../../icons/moreHoriz.svg';
 
 
 function TrendingAccountCard(props) {

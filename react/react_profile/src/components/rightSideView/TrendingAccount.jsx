@@ -1,6 +1,6 @@
 import TrendingAccountCard from './TrendingAccountCard';
 import styles from './css/TrendingAccount.module.css';
-import { trendingAccounts } from '../data/trendingAccounts';
+import { trendingAccounts } from '../../data/trendingAccounts';
 
 function TrendingAccount(props) {
     return (

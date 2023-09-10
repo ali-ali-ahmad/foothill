@@ -1,6 +1,6 @@
 import styles from './css/MightLikeCard.module.css';
-import { profiles } from '../data/users';
-import FollowBtn from './FollowBtn';
+import { profiles } from '../../data/users';
+import FollowBtn from '../reusable/FollowBtn';
 
 function MightLikeCard(props) {
 

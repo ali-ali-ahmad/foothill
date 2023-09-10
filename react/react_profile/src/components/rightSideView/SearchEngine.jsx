@@ -1,5 +1,5 @@
 import styles from './css/SearchEngine.module.css';
-import searchIcon from '../icons/search.svg';
+import searchIcon from '../../icons/search.svg';
 
 function SearchEngine(props) {
     return (

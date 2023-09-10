@@ -1,15 +1,15 @@
 
-import LeftSideView from './views/LeftSidebarView';
-import RightSideView from './views/RightSidebarView';
-import UserProfileView from './views/UserProfileView';
+import LeftSide from './views/LeftSide';
+import RightSide from './views/RightSide';
+import CenterSide from './views/CenterSide';
 import styles from './App.module.css';
 
 function App() {
     return (
         <div className={styles.container}>
-            <LeftSideView className={styles.leftSide} />
-            <UserProfileView className={styles.centerPage} />
-            <RightSideView className={styles.rightSide} />
+            <LeftSide className={styles.leftSide} />
+            <CenterSide className={styles.centerPage} />
+            <RightSide className={styles.rightSide} />
         </div>
     );
 }
