@@ -8,59 +8,68 @@ import communities from '../icons/communities.svg';
 import profile from '../icons/profile.svg';
 import more from '../icons/more.svg';
 
-export const navBtnInfo = {
-    'home': {
+export const navBtnInfo = [
+    {
+        'id': 1,
         'title': 'Home',
         'logo': home,
         'alt': 'Home Logo',
         'link': '/home'
     },
-    'explore': {
+    {
+        'id': 2,
         'title': 'Explore',
         'logo': search,
         'alt': 'Explore Logo',
         'link': '/explore'
     },
-    'notifications': {
+    {
+        'id': 3,
         'title': 'Notifications',
         'logo': notifications,
         'alt': 'Notifications Logo',
         'link': '/notifications'
     },
-    'messages': {
+    {
+        'id': 4,
         'title': 'Messages',
         'logo': message,
         'alt': 'Messages Logo',
         'link': '/messages'
     },
-    'list': {
+    {
+        'id': 5,
         'title': 'Lists',
         'logo': list,
         'alt': 'List Logo',
         'link': '/list'
     },
-    'bookmarks': {
+    {
+        'id': 6,
         'title': 'Bookmarks',
         'logo': bookmarks,
         'alt': 'Bookmarks Logo',
         'link': '/bookmarks'
     },
-    'communities': {
+    {
+        'id': 7,
         'title': 'Communities',
         'logo': communities,
         'alt': 'Communities Logo',
         'link': '/communities'
     },
-    'profile': {
+    {
+        'id': 8,
         'title': 'Profile',
         'logo': profile,
         'alt': 'Profile Logo',
         'link': '/profile'
     },
-    'more': {
+    {
+        'id': 9,
         'title': 'More',
         'logo': more,
         'alt': 'More Logo',
         'link': '/more'
     },
-}
+]

@@ -1,6 +1,6 @@
 import styles from './css/Footer.module.css';
 
-function Footer(props) {
+function Footer() {
 
     return (
         <div className={styles.container}>

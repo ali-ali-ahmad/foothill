@@ -1,20 +1,15 @@
-import React, {useState} from 'react';
+
 import NavBtn from "../components/leftSideView/NavBtn";
 import { navBtnInfo } from '../data/navBtnInfo';
 import PostBtn from '../components/leftSideView/PostBtn';
 import ProfileCard from '../components/leftSideView/ProfileCard';
-import { profiles } from '../data/users';
 import TwitterXLogo from '../icons/TwitterXLogo.jpg';
 import styles from './css/LeftSide.module.css';
 
-function LeftSide(props) {
-    const [currentId, setCurrentId] = useState(2);
-
-    const selectedProfile = profiles.find(profile => profile.id === currentId);
-
+function LeftSide({user, className}) {
 
     return (
-        <div className={props.className}>
+        <div className={className}>
             <div className={styles.upperPart}>
                 <img
                     className={styles.xLogo}
@@ -22,22 +17,22 @@ function LeftSide(props) {
                     alt="Page logo"
                     />
                 <div className={styles.navLinks}>
-                    {Object.keys(navBtnInfo).map((key) => (
+                    {navBtnInfo.map((item) => (
                         <NavBtn
-                            key={key}
-                            title={navBtnInfo[key].title}
-                            logo={navBtnInfo[key].logo}
-                            alt={navBtnInfo[key].alt}
-                            link={navBtnInfo[key].link}
+                            key={item.id}
+                            title={item.title}
+                            logo={item.logo}
+                            alt={item.alt}
+                            link={item.link}
                         />
                     ))}
                 </div>
                 <PostBtn />
             </div>
             <ProfileCard
-                name={selectedProfile.name}
-                link={selectedProfile.profilePicture}
-                userName={selectedProfile.userName}
+                name={user.name}
+                picture={user.profilePicture}
+                userName={user.userName}
             />
         </div>
     );

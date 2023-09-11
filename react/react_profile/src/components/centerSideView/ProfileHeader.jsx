@@ -8,8 +8,7 @@ import notificationAdd from '../../icons/notificationAdd.svg';
 import FollowBtn from '../reusable/FollowBtn';
 import { profiles } from '../../data/users';
 
-function ProfileHeader(props) {
-    const { profile, matchedFollowers } = props;
+function ProfileHeader({ profile, matchedFollowers }) {
 
     const displayedFollowers = matchedFollowers.slice(0, 3);
     const remainingFollowersCount = matchedFollowers.length - 3; 

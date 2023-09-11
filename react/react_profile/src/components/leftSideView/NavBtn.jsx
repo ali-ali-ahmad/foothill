@@ -1,10 +1,11 @@
 import styles from './css/NavBtn.module.css';
 
-function NavBtn(props) {
+function NavBtn({link, title, logo, alt}) {
+
     return (
-        <a href={props.link} className={styles.container}>
-            <img src={props.logo} alt={props.alt} />
-            <p>{props.title}</p>
+        <a href={link} className={styles.container}>
+            <img src={logo} alt={alt} />
+            <p>{title}</p>
         </a>
     );
 }

@@ -2,11 +2,11 @@
 function Button({ buttonValue, className }) {
 
     return (
-        <input
-            type="submit"
-            value={buttonValue}
+        <button
             className={className}
-        />
+        >
+            {buttonValue}
+        </button>
     );
 }
 

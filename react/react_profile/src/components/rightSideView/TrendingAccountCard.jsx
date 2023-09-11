@@ -2,8 +2,7 @@ import styles from './css/TrendingAccountCard.module.css';
 import moreHoriz from '../../icons/moreHoriz.svg';
 
 
-function TrendingAccountCard(props) {
-    const {title, category, posts} = props;
+function TrendingAccountCard({title, category, posts}) {
 
     return (
         <div className={styles.container}>

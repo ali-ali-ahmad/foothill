@@ -1,13 +1,14 @@
 import styles from './css/ProfileCard.module.css';
 import profileInfo from '../../icons/profileInfo.svg';
 
-function ProfileCard(props) {
+function ProfileCard({name, picture, alt, userName}) {
+
     return (
         <div className={styles.container}>
-            <img className={styles.profileImg} src={props.link} alt={props.alt} />
+            <img className={styles.profileImg} src={picture} alt={alt} />
             <div className={styles.userInfo}>
-                <p>{props.name}</p>
-                <p className={styles.userName}>{props.userName}</p>
+                <p>{name}</p>
+                <p className={styles.userName}>{userName}</p>
             </div>
             <img className={styles.infologo} src={profileInfo} alt='Profile Info logo' />
         </div>

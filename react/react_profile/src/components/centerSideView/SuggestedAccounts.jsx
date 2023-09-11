@@ -2,9 +2,7 @@ import AccountCard from './AccountCard';
 import ShowMoreBtn from '../reusable/ShowMoreBtn';
 import styles from './css/SuggestedAccounts.module.css';
 
-function SuggestedAccounts(props) {
-    const {currentProfile} = props
-
+function SuggestedAccounts({currentProfile}) {
 
     return (
         <div className={styles.container}>

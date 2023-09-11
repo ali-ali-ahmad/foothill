@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import styles from './css/TabsContainer.module.css';
 import PostContainer from './PostContainer';
 
-function TabsContainer(props){
+function TabsContainer({profile}){
     const [activeTab, setActiveTab] = useState('Post');
 
     const active = {
@@ -44,7 +44,7 @@ function TabsContainer(props){
                 />
             </div>
             <div className={styles.tabContent}>
-                {activeTab === 'Post' && <PostContainer profile={props.profile}/>}
+                {activeTab === 'Post' && <PostContainer profile={profile}/>}
                 {activeTab === 'Replies' && <div>Content for Replies</div>}
                 {activeTab === 'Media' && <div>Content for Media</div>}
                 {activeTab === 'Likes' && <div>Content for Likes</div>}

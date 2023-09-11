@@ -3,17 +3,17 @@ import styles from './css/TrendingAccount.module.css';
 import { trendingAccounts } from '../../data/trendingAccounts';
 import ShowMoreBtn from '../reusable/ShowMoreBtn';
 
-function TrendingAccount(props) {
+function TrendingAccount() {
     return (
         <div className={styles.container}>
             <h2>Trending for you</h2>
             <div className={styles.navLinks}>
-                {Object.keys(trendingAccounts).map((key) => (
+                {trendingAccounts.map((item) => (
                     <TrendingAccountCard
-                        key={key}
-                        title={trendingAccounts[key].title}
-                        category={trendingAccounts[key].category}
-                        posts={trendingAccounts[key].posts}
+                        key={item.id}
+                        title={item.title}
+                        category={item.category}
+                        posts={item.posts}
                     />
                 ))}
                 <ShowMoreBtn />

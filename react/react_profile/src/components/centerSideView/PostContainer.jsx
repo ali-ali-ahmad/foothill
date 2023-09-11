@@ -7,7 +7,7 @@ import upload from '../../icons/upload.svg';
 import styles from './css/PostContainer.module.css';
 
 
-function PostContainer(props) {
+function PostContainer({profile}) {
 
     return (
         <div className={styles.container}>
@@ -16,32 +16,32 @@ function PostContainer(props) {
                 <p>React reposted</p>
             </div>
             <div className={styles.postContent}>
-                <img className={styles.profilePic} src={props.profile.profilePicture} alt="ProfilePicture" />
+                <img className={styles.profilePic} src={profile.profilePicture} alt="ProfilePicture" />
                 <div className={styles.postText}>
                     <div>
-                        <h5>{props.profile.posts[0].addedBy}</h5>
-                        <p>{props.profile.posts[0].dateAdded}</p>
+                        <h5>{profile.posts[0].addedBy}</h5>
+                        <p>{profile.posts[0].dateAdded}</p>
                     </div>
-                    <h5>{props.profile.posts[0].content}</h5>
+                    <h5>{profile.posts[0].content}</h5>
                 </div>
                 <img src={moreHoriz} alt="more" />
             </div>
             <div className={styles.postInsight}>
                 <div>
                     <img src={comment} alt="comments" />
-                    <h6>{props.profile.posts[0].comments}</h6>
+                    <h6>{profile.posts[0].comments}</h6>
                 </div>
                 <div>
                     <img src={repost} alt="repost" />
-                    <h6>{props.profile.posts[0].repost}</h6>
+                    <h6>{profile.posts[0].repost}</h6>
                 </div>
                 <div>
                     <img src={heart} alt="heart" />
-                    <h6>{props.profile.posts[0].likes}</h6>
+                    <h6>{profile.posts[0].likes}</h6>
                 </div>
                 <div>
                     <img src={insight} alt="insight" />
-                    <h6>{props.profile.posts[0].reached}</h6>
+                    <h6>{profile.posts[0].reached}</h6>
                 </div>
                 <div>
                     <img src={upload} alt="upload" />

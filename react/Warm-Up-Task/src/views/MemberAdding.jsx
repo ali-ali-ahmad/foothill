@@ -9,6 +9,7 @@ function MemberAdding() {
         <div className={styles.container}>
             <h2>Add members to Front-end development team</h2>
             <Search />
+            {/* change the name to newMembers */}
             {NEW_MEMBERS.map((member) => (
                 <Card name={member.name}/>
             ))}

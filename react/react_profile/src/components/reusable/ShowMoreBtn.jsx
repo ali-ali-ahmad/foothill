@@ -1,6 +1,6 @@
 import styles from './css/ShowMoreBtn.module.css';
 
-function ShowMoreBtn(props) {
+function ShowMoreBtn() {
     return (
         <div className={styles.container}>
             <input type="button" value="Show more"/>

@@ -2,9 +2,9 @@ import styles from './css/MightLikeCard.module.css';
 import { profiles } from '../../data/users';
 import FollowBtn from '../reusable/FollowBtn';
 
-function MightLikeCard(props) {
+function MightLikeCard({id}) {
 
-    const selectedProfile = profiles.find(profile => profile.id === props.id);
+    const selectedProfile = profiles.find(profile => profile.id === id);
 
     return (
         <div className={styles.container}>

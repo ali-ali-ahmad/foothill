@@ -5,7 +5,7 @@ function Card({ name }) {
     const [isChecked, setIsChecked] = useState(false);
 
     const handleCheckboxChange = () => {
-        setIsChecked(!isChecked);
+        setIsChecked(prev=>!prev);
     };
 
     return (

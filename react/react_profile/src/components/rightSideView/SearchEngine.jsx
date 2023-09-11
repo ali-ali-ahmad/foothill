@@ -1,7 +1,7 @@
 import styles from './css/SearchEngine.module.css';
 import searchIcon from '../../icons/search.svg';
 
-function SearchEngine(props) {
+function SearchEngine() {
     return (
         <div className={styles.container}>
             <img className={styles.SearchIcon} src={searchIcon} alt="Search Logo" />

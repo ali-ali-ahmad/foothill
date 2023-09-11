@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import styles from './css/FollowBtn.module.css';
 
-function FollowBtn(props) {
+function FollowBtn() {
     const [followStatus, setFollowStatus] = useState(false);
     const [btnValue, setBtnValue] = useState('Follow');
 

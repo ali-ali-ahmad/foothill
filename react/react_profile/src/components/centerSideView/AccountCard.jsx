@@ -3,22 +3,16 @@ import profileIcon from '../../icons/profile.svg';
 import { profiles } from '../../data/users';
 import FollowBtn from '../reusable/FollowBtn';
 
+function AccountCard({ currentProfile, id }) {
 
-function AccountCard(props) {
-    const { currentProfile, id } = props;
-    let matchedFollowers = [];
+    const selectedProfile = profiles.find((profile) => profile.id === id);
 
-    const selectedProfile = profiles.find(profile => profile.id === id);
-
-    selectedProfile.followers.users.forEach((follower) => {
-        if (currentProfile.following.users.includes(follower)) {
-            matchedFollowers.push(follower);
-        }
-    });
+    const matchedFollowers = selectedProfile.followers.users.filter((follower) =>
+        currentProfile.following.users.includes(follower)
+    );
 
     const displayedFollowers = matchedFollowers.slice(0, 1);
-    const remainingFollowersCount = matchedFollowers.length - 1; 
-
+    const remainingFollowersCount = matchedFollowers.length - 1;
 
     return (
         <div className={styles.container}>
