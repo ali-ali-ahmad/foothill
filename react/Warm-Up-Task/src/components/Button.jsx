@@ -2,11 +2,7 @@
 function Button({ buttonValue, className }) {
 
     return (
-        <button
-            className={className}
-        >
-            {buttonValue}
-        </button>
+        <button className={className}>{buttonValue}</button>
     );
 }
 

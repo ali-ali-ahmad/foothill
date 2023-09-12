@@ -1,4 +1,4 @@
-export const NEW_MEMBERS = [
+export const newMemebers = [
     {name: "Carolien Bloeme"},
     {name: "Sun Jun"},
     {name: "Song Bao"},

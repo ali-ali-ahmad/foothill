@@ -1,4 +1,4 @@
-import './App.css';
+// import './App.css';
 import MemberAdding from './views/MemberAdding';
 
 function App() {

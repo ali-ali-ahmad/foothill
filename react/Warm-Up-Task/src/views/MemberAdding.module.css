@@ -2,25 +2,22 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-}
-
-.actionButtons {
-    width: 300px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+    justify-content: center;
 }
 
 .cancelButton, .saveButton {
-    width: 45%;
-    font-weight: 900;
-    padding: 20px;
+    padding: 10px 20px 10px 20px;
     text-align: center;
     border-radius: 10px;
-    font-size: larger;
+    font-size: 18px;
 }
 
 .saveButton {
     background-color: #7690ff;
     border: 1px solid #7690ff;
+    color: white;
+}
+
+.cancelButton {
+    border: 1px solid grey;
 }
