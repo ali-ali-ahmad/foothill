@@ -1,0 +1,56 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    border: 1px solid grey;
+    border-radius: 10px;
+    padding: 10px;
+}
+
+.listTitle {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+}
+
+.titleOption img {
+    width: 18px;
+}
+
+.newInput {
+    border: 1px solid #262626;
+    display: flex;
+    padding: 5px 10px 5px 10px;
+    background-color: #262626;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.newInput:hover {
+    background-color: #2f2f2f;
+}
+
+.newInput input {
+    outline: none;
+    border: none;
+    border-radius: 5px;
+    background-color: #262626;
+    color: white;
+    cursor: pointer;
+}
+
+
+
+.newInput img {
+    width: 26px;
+    cursor: pointer;
+}
+
+.cardList {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    border-radius: 1px;
+}
+
