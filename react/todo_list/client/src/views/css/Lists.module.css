@@ -26,5 +26,21 @@
 
 .newCategoryBtn:hover {
     background-color: #0077d4;
-    font-weight: 700;
+}
+
+.newCategory {
+    display: flex;
+    gap: 10px;
+    padding: 10px;
+    background-color: rgb(63, 63, 63);
+    border-radius: 10px;
+}
+
+.newCategory > input {
+    border: none;
+    padding: 5px 10px 5px 10px;
+    border-radius: 10px;
+    outline: none;
+    background-color: transparent;
+    color: white;
 }
