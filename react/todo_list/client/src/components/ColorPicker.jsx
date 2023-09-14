@@ -2,7 +2,10 @@
 import React from 'react';
 import styles from './css/ColorPicker.module.css';
 
-const ColorPicker = ({ colors, onSelectColor }) => {
+const ColorPicker = ({ onSelectColor }) => {
+
+    const colors = ['red', 'blue', 'yellow', 'green', 'grey', 'purple', 'orange', 'pink', 'brown'];
+
     return (
         <div className={styles.container}>
             <span>Colors</span>

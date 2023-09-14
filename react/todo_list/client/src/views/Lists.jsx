@@ -13,6 +13,11 @@ const Lists = () => {
         }
     };
 
+    const handleDeleteList = (title) => {
+        const updatedLists = lists.filter((list) => list.title !== title);
+        setLists(updatedLists);
+    };
+
     return (
         <div className={styles.container}>
             <div className={styles.header}>
@@ -31,7 +36,7 @@ const Lists = () => {
             </div>
             <div className={styles.listsContainer}>
                 {lists.map((list, index) => (
-                    <NewList key={index} title={list.title} />
+                    <NewList key={index} title={list.title} handleDeleteList={() => handleDeleteList(list.title)}/>
                 ))}
             </div>
         </div>
