@@ -7,6 +7,6 @@ app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({extended: true}));
 const port = process.env.PORT;
-require('./routes/note.routes')(app);
+require('./routes/todo.routes')(app);
 
 app.listen(port, ()=> console.log(`Listening on port : ${port}`));

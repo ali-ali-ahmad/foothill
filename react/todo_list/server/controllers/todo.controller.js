@@ -1,12 +1,12 @@
 const {Todo} = require('../models/todo.model');
 
 module.exports.createToDo = (request, response) => {
-    const {title, description} = request.body;
+    const {title, cards} = request.body;
     Todo.create({
         title,
-        description
+        cards
     })
-    .then(note => response.json(note))
+    .then(todo => response.json(todo))
     .catch(err => response.status(400).json(err));
 }
 
@@ -41,6 +41,16 @@ module.exports.updateTodo = (request, response) => {
         .then(updatedTodo => response.json(updatedTodo))
         .catch(err => response.status(400).json(err))
 }
+
+// module.exports.updateTodo = (request, response) => {
+//     Todo.findOneAndUpdate(
+//         { _id: request.params.id },
+//         { $push: { cards: request.body.cards } }, // Use $push to add a card to the array
+//         { new: true }
+//     )
+//         .then(updatedTodo => response.json(updatedTodo))
+//         .catch(err => response.status(400).json(err))
+// };
 
 module.exports.deleteTodo = (request, response) => {
     Todo.deleteOne({ _id: request.params.id })

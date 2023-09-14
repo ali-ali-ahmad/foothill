@@ -8,9 +8,9 @@ import moreIcon from '../icons/more.svg';
 import doneIcon from '../icons/done.svg';
 import ColorPicker from './ColorPicker';
 
-const NewList = ({ title, handleDeleteList }) => {
+const NewList = ({ id, title, handleDeleteList, updateList, cards }) => {
     const [listTitle, setListTitle] = useState(title);
-    const [cardTitles, setCardTitles] = useState([]);
+    const [cardTitles, setCardTitles] = useState(cards);
     const [newCardTitle, setNewCardTitle] = useState('');
     const [isEditingTitle, setIsEditingTitle] = useState(false);
     const [backgroundColor, setBackgroundColor] = useState(null);
@@ -20,9 +20,11 @@ const NewList = ({ title, handleDeleteList }) => {
     const addCard = () => {
         if (newCardTitle) {
             setCardTitles([...cardTitles, newCardTitle]);
+            updateList(id, newCardTitle)
             setNewCardTitle('');
         }
     };
+    
 
     const handleEditTitleClick = () => {
         setIsEditingTitle(!isEditingTitle);
@@ -56,7 +58,7 @@ const NewList = ({ title, handleDeleteList }) => {
     };
 
     return (
-        <div className={styles.container}>
+        <div className={styles.container} >
             <div className={styles.listTitle}>
                 {isEditingTitle ? (
                     <div className={styles.editInput}>

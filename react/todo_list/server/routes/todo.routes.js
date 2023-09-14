@@ -6,4 +6,5 @@ module.exports = function(app){
     app.get('/:id', TodoController.getTodo);
     app.put('/:id', TodoController.updateTodo);
     app.delete('/:id', TodoController.deleteTodo);
-    app.get('/search/:query', TodoController.searchTodo);}
+    app.get('/search/:query', TodoController.searchTodo);
+}
