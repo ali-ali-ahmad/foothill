@@ -8,7 +8,7 @@ import moreIcon from '../icons/more.svg';
 import doneIcon from '../icons/done.svg';
 import ColorPicker from './ColorPicker';
 
-const NewList = ({ list, handleDeleteList, updateCards, updateBgColor, updateListTitle }) => {
+const NewList = ({ list, handleDeleteList, addNewCard, updateBgColor, updateListTitle, updateCardTitle }) => {
     const [listTitle, setListTitle] = useState(list.title);
     const [cardTitles, setCardTitles] = useState(list.cards);
     const [newCardTitle, setNewCardTitle] = useState('');
@@ -19,8 +19,12 @@ const NewList = ({ list, handleDeleteList, updateCards, updateBgColor, updateLis
 
     const addCard = () => {
         if (newCardTitle) {
-            setCardTitles([...cardTitles, newCardTitle]);
-            updateCards(list._id, newCardTitle)
+            const newCard = {
+                title: newCardTitle,
+                description: ""
+            }
+            setCardTitles([...cardTitles, newCard]);
+            addNewCard(list._id, newCard)
             setNewCardTitle('');
         }
     };
@@ -45,17 +49,22 @@ const NewList = ({ list, handleDeleteList, updateCards, updateBgColor, updateLis
         setShowColorPicker(false);
     };
 
-    const handleDeleteCard = (title) => {
-        const updatedList = cardTitles.filter((card) => card !== title);
+    const handleDeleteCard = (cardId) => {
+        const updatedList = cardTitles.filter((card) => card._id !== cardId);
         setCardTitles(updatedList);
     };
 
-    const handleEditCard = (title, newTitle) => {
-        const cardIndex = cardTitles.findIndex((card) => card === title);
+    const handleEditCard = (cardId, newTitle) => {
+        const cardIndex = cardTitles.findIndex((card) => card._id === cardId);
         if (cardIndex !== -1) {
+            const editedCard = {
+                title: newTitle,
+                description: ''
+            }
             const updatedCardTitles = [...cardTitles];
-            updatedCardTitles[cardIndex] = newTitle;
+            updatedCardTitles[cardIndex] = editedCard;
             setCardTitles(updatedCardTitles);
+            updateCardTitle(list._id, cardId, newTitle);
         }
     };
 
@@ -96,12 +105,12 @@ const NewList = ({ list, handleDeleteList, updateCards, updateBgColor, updateLis
                 />
             </div>
             <div className={styles.cardList}>
-                {cardTitles.map((title, index) => (
+                {cardTitles.map((card, index) => (
                     <Card 
                     key={index} 
-                    title={title} 
-                    handleDeleteCard={() => handleDeleteCard(title)}
-                    handleEditCard={() => handleEditCard(title)}
+                    card={card}
+                    handleDeleteCard={() => handleDeleteCard(card._id)}
+                    handleEditCard={handleEditCard}
                     />
                 ))}
             </div>

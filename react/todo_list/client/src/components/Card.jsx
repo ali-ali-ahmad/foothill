@@ -4,9 +4,9 @@ import editIcon from '../icons/edit.svg';
 import deleteIcon from '../icons/delete.svg';
 import doneIcon from '../icons/done.svg';
 
-const Card = ({ title, handleEditCard, handleDeleteCard }) => {
+const Card = ({ card, handleEditCard, handleDeleteCard }) => {
     const [isEditingTitle, setIsEditingTitle] = useState(false);
-    const [editedTitle, setEditedTitle] = useState(title);
+    const [editedTitle, setEditedTitle] = useState(card.title);
 
     const handleEditTitleClick = () => {
         setIsEditingTitle(true);
@@ -17,7 +17,7 @@ const Card = ({ title, handleEditCard, handleDeleteCard }) => {
     };
 
     const handleSaveTitle = () => {
-        handleEditCard(title, editedTitle);
+        handleEditCard(card._id, editedTitle);
         setIsEditingTitle(false);
     };
 

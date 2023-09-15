@@ -1,10 +1,5 @@
 const mongoose = require('mongoose');
 
-// const CardSchema = new mongoose.Schema({
-//     title: String,
-//     description: String,
-// }, {timestamps: true});
-
 const TodoSchema = new mongoose.Schema({
     title: {
         type: String,
@@ -14,8 +9,11 @@ const TodoSchema = new mongoose.Schema({
     bgColor: {
         type: String,
     },
-    cards: {
-        type: Array,
-    }
+    cards: [
+        {
+            title: {type: String},
+            description: {type: String}
+        }
+    ]
 }, {timestamps: true});
 module.exports.Todo = mongoose.model('Todo', TodoSchema)

@@ -40,12 +40,12 @@ const Lists = () => {
         }
     };
 
-    const updateCards = (id, newCardTitle) => {
+    const addCard = (id, newCard) => {
 
         const updatedLists = [...lists];
         const updatedList = updatedLists.find((list) => list._id === id);
 
-        updatedList.cards.push(newCardTitle);
+        updatedList.cards.push(newCard);
         axios.put(`http://localhost:8000/${id}`, updatedList)
         .then((response) => {
             setLists(updatedLists);
@@ -54,6 +54,42 @@ const Lists = () => {
             console.error('Error adding new list:', error);
         });
     };
+
+    const updateCardTitle = (listId, cardId, newCardTitle) => {
+
+        const updatedLists = [...lists];
+        const updatedList = updatedLists.find((list) => list._id === listId);
+        
+        const updatedCards = [...updatedList.cards];
+        const updatedCard = updatedCards.find((card) => card._id === cardId);
+        // console.log('this is updatedCard:', JSON.stringify(updatedCard));
+
+        updatedCard.title = newCardTitle;
+
+        updatedList.cards = updatedCards;
+        axios.put(`http://localhost:8000/${listId}`, updatedList)
+        .then((response) => {
+            setLists(updatedLists);
+        })
+        .catch((error) => {
+            console.error('Error adding new list:', error);
+        });
+    };
+
+    // const updateCardTitle = (id, newCardTitle) => {
+
+    //     const updatedLists = [...lists];
+    //     const updatedList = updatedLists.find((list) => list._id === id);
+
+    //     updatedList.cards.push(newCardTitle);
+    //     axios.put(`http://localhost:8000/${id}`, updatedList)
+    //     .then((response) => {
+    //         setLists(updatedLists);
+    //     })
+    //     .catch((error) => {
+    //         console.error('Error adding new list:', error);
+    //     });
+    // };
 
     const updateListTitle = (id, newTitle) => {
 
@@ -117,9 +153,10 @@ const Lists = () => {
                     <NewList 
                     key={index} 
                     list={list}
-                    updateCards={updateCards}
+                    addNewCard={addCard}
                     updateBgColor={updateBgColor}
                     updateListTitle={updateListTitle}
+                    updateCardTitle={updateCardTitle}
                     handleDeleteList={() => handleDeleteList(list._id)}/>
                 ))}
             </div>
