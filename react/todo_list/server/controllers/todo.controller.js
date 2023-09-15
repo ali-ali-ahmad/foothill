@@ -1,9 +1,10 @@
 const {Todo} = require('../models/todo.model');
 
 module.exports.createToDo = (request, response) => {
-    const {title, cards} = request.body;
+    const {title, bgColor, cards} = request.body;
     Todo.create({
         title,
+        bgColor,
         cards
     })
     .then(todo => response.json(todo))
@@ -15,20 +16,6 @@ module.exports.getAllTodo = (request, response) => {
         .then(todos => response.json(todos))
         .catch(err => response.status(400).json(err))
 }
-
-module.exports.getTodosPage = (request, response) => {
-    const page = parseInt(request.query.page) || 1; 
-    const limit = parseInt(request.query.limit) || 10;
-
-    const skip = (page - 1) * limit;
-
-    Todo.find({})
-        .skip(skip)
-        .limit(limit)
-        .then(todos => response.json(todos))
-        .catch(err => response.status(400).json(err));
-};
-
 
 module.exports.getTodo = (request, response) => {
     Todo.findOne({_id: request.params.id})
@@ -42,10 +29,19 @@ module.exports.updateTodo = (request, response) => {
         .catch(err => response.status(400).json(err))
 }
 
+// module.exports.updateTitleColor = (request, response) => {
+//     Todo.findOneAndUpdate(
+//         { _id: request.params.id },
+//         { bgColor: request.body.bgColor },
+//         { new: true }
+//     )
+//         .then(updatedTodo => response.json(updatedTodo))
+//         .catch(err => response.status(400).json(err))
+// };
 // module.exports.updateTodo = (request, response) => {
 //     Todo.findOneAndUpdate(
 //         { _id: request.params.id },
-//         { $push: { cards: request.body.cards } }, // Use $push to add a card to the array
+//         { $push: { cards: request.body.cards } },
 //         { new: true }
 //     )
 //         .then(updatedTodo => response.json(updatedTodo))
@@ -57,14 +53,3 @@ module.exports.deleteTodo = (request, response) => {
         .then(deleteConfirmation => response.json(deleteConfirmation))
         .catch(err => response.status(400).json(err))
 }
-
-module.exports.searchTodo = (request, response) => {
-    const query = request.params.query; 
-
-    const searchRegex = new RegExp(`^${query}`, 'i');
-
-    Todo.find({ $or: [{ title: searchRegex }, { content: searchRegex }] })
-        .then(Todos => response.json(Todos))
-        .catch(err => response.status(400).json(err));
-
-};

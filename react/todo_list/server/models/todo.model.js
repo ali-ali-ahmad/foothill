@@ -11,6 +11,9 @@ const TodoSchema = new mongoose.Schema({
         minlength:3,
         required: true,
     },
+    bgColor: {
+        type: String,
+    },
     cards: {
         type: Array,
     }

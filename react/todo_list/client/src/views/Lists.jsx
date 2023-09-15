@@ -2,10 +2,15 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import styles from './css/Lists.module.css';
 import NewList from '../components/NewList';
+import { colors } from '../data/colors';
 
 const Lists = () => {
     const [lists, setLists] = useState([]);
     const [newListTitle, setNewListTitle] = useState('');
+
+    const randomIndex = Math.floor(Math.random() * colors.length);
+    const randomColor = colors[randomIndex];
+
 
     useEffect(() => {
         axios.get('http://localhost:8000/')
@@ -21,6 +26,7 @@ const Lists = () => {
         if (newListTitle) {
             const newList = {
                 title: newListTitle,
+                bgColor: randomColor,
                 cards: []
             };
             axios.post('http://localhost:8000/', newList)
@@ -40,6 +46,21 @@ const Lists = () => {
         const updatedList = updatedLists.find((list) => list._id === id);
 
         updatedList.cards.push(newCardTitle);
+        axios.put(`http://localhost:8000/${id}`, updatedList)
+        .then((response) => {
+            setLists(updatedLists);
+        })
+        .catch((error) => {
+            console.error('Error adding new list:', error);
+        });
+    };
+
+    const updateBgColor = (id, newColor) => {
+
+        const updatedLists = [...lists];
+        const updatedList = updatedLists.find((list) => list._id === id);
+
+        updatedList.bgColor = newColor;
         axios.put(`http://localhost:8000/${id}`, updatedList)
         .then((response) => {
             setLists(updatedLists);
@@ -80,10 +101,9 @@ const Lists = () => {
                 {lists.map((list, index) => (
                     <NewList 
                     key={index} 
-                    id={list._id} 
-                    title={list.title} 
+                    list={list}
                     updateList={updateList}
-                    cards={Array.isArray(list.cards) ? list.cards : []}
+                    updateBgColor={updateBgColor}
                     handleDeleteList={() => handleDeleteList(list._id)}/>
                 ))}
             </div>
