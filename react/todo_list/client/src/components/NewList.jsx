@@ -8,7 +8,7 @@ import moreIcon from '../icons/more.svg';
 import doneIcon from '../icons/done.svg';
 import ColorPicker from './ColorPicker';
 
-const NewList = ({ list, handleDeleteList, updateList, updateBgColor }) => {
+const NewList = ({ list, handleDeleteList, updateCards, updateBgColor, updateListTitle }) => {
     const [listTitle, setListTitle] = useState(list.title);
     const [cardTitles, setCardTitles] = useState(list.cards);
     const [newCardTitle, setNewCardTitle] = useState('');
@@ -20,7 +20,7 @@ const NewList = ({ list, handleDeleteList, updateList, updateBgColor }) => {
     const addCard = () => {
         if (newCardTitle) {
             setCardTitles([...cardTitles, newCardTitle]);
-            updateList(list._id, newCardTitle)
+            updateCards(list._id, newCardTitle)
             setNewCardTitle('');
         }
     };
@@ -32,6 +32,7 @@ const NewList = ({ list, handleDeleteList, updateList, updateBgColor }) => {
 
     const handleTitleChange = (e) => {
         setListTitle(e.target.value);
+        updateListTitle(list._id, e.target.value);
     };
 
     const handleMoreIconClick = () => {
