@@ -56,17 +56,17 @@ const NewList = ({ list, handleDeleteList, addNewCard, updateBgColor, updateList
         handleDeletedCard(list._id, updatedCards);
     };
 
-    const handleEditCard = (cardId, newTitle) => {
+    const handleEditCard = (cardId, newTitle, newDescription) => {
         const cardIndex = cardTitles.findIndex((card) => card._id === cardId);
         if (cardIndex !== -1) {
             const editedCard = {
                 title: newTitle,
-                description: ''
+                description: newDescription
             }
             const updatedCardTitles = [...cardTitles];
             updatedCardTitles[cardIndex] = editedCard;
             setCardTitles(updatedCardTitles);
-            updateCardTitle(list._id, cardId, newTitle);
+            updateCardTitle(list._id, cardId, editedCard);
         }
     };
 
@@ -111,7 +111,7 @@ const NewList = ({ list, handleDeleteList, addNewCard, updateBgColor, updateList
                     <Card 
                     key={card._id} 
                     card={card}
-                    handleDeleteCard={() => handleDeleteCard(card._id)}
+                    handleDeleteCard={handleDeleteCard}
                     handleEditCard={handleEditCard}
                     />
                 ))}

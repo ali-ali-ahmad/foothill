@@ -55,7 +55,7 @@ const Lists = () => {
         });
     };
 
-    const updateCardTitle = (listId, cardId, newCardTitle) => {
+    const updateCardTitle = (listId, cardId, newCard) => {
 
         const updatedLists = [...lists];
         const updatedList = updatedLists.find((list) => list._id === listId);
@@ -63,7 +63,8 @@ const Lists = () => {
         const updatedCards = [...updatedList.cards];
         const updatedCard = updatedCards.find((card) => card._id === cardId);
 
-        updatedCard.title = newCardTitle;
+        updatedCard.title = newCard.title;
+        updatedCard.description = newCard.description;
 
         updatedList.cards = updatedCards;
         axios.put(`http://localhost:8000/${listId}`, updatedList)

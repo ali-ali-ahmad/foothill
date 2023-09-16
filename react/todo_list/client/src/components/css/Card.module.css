@@ -1,17 +1,30 @@
-.container {
+.cardContainer {
     border: 1px solid #262626;
     background-color: #262626;
     border-radius: 5px;
+    padding: 0px 10px 0px 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+
+
+
+.cardTitle {
+    border-radius: 5px;
+    width: 100%;
     padding: 5px 10px 5px 10px;
     text-align: left;
     cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    position: relative;
 }
 
-.container:hover {
+.cardTitle:hover {
     background-color: #2f2f2f;
 }
 
@@ -58,4 +71,95 @@
 
 .editInput > img:hover {
     background-color: #262626;
+}
+
+.cardContent {
+    border-top: 1px solid grey;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+}
+
+.description {
+    max-width: 250px;
+    font-size: 13px;
+}
+
+
+.descriptionHeader {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    line-height: 5px;
+}
+
+.descriptionHeader > img {
+    width: 18px;
+    cursor: pointer;
+    border-radius: 100%;
+    padding: 3px;
+    transition: background-color 0.3s ease, cursor 0.3s ease; 
+}
+
+.descriptionHeader > img:hover {
+    background-color: #2f2f2f;
+}
+
+.editDescription {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 20px;
+    background-color: #262626;
+    border-radius: 10px;
+    gap: 10px;
+}
+
+
+
+.textArea {
+    outline: none;
+    color: white;
+    background-color: transparent;
+    border-radius: 10px;
+    border: 1px solid #ccc;
+    padding: 8px;
+    width: 300px;
+    height: 200px;
+    font-size: 13px;
+    box-sizing: border-box;
+    scrollbar-width: thin;
+    scrollbar-color: #ccc transparent;
+}
+
+
+.textArea::-webkit-scrollbar {
+    width: 5px; 
+}
+
+.textArea::-webkit-scrollbar-thumb {
+    background-color: #ccc;
+    border-radius: 20px;
+}
+
+.textArea::-webkit-scrollbar-thumb:hover {
+    background-color: #999; 
+}
+
+.editDescription img  {
+    width: 26px;
+    padding: 2px;
+    cursor: pointer;
+    border-radius: 100%;
+}
+
+.editDescription img:hover  {
+    background-color: #2f2f2f;
+    background-color: green;
 }
