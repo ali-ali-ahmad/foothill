@@ -29,24 +29,6 @@ module.exports.updateTodo = (request, response) => {
         .catch(err => response.status(400).json(err))
 }
 
-// module.exports.updateTitleColor = (request, response) => {
-//     Todo.findOneAndUpdate(
-//         { _id: request.params.id },
-//         { bgColor: request.body.bgColor },
-//         { new: true }
-//     )
-//         .then(updatedTodo => response.json(updatedTodo))
-//         .catch(err => response.status(400).json(err))
-// };
-// module.exports.updateTodo = (request, response) => {
-//     Todo.findOneAndUpdate(
-//         { _id: request.params.id },
-//         { $push: { cards: request.body.cards } },
-//         { new: true }
-//     )
-//         .then(updatedTodo => response.json(updatedTodo))
-//         .catch(err => response.status(400).json(err))
-// };
 
 module.exports.deleteTodo = (request, response) => {
     Todo.deleteOne({ _id: request.params.id })

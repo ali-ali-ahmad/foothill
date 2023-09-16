@@ -8,7 +8,7 @@ import moreIcon from '../icons/more.svg';
 import doneIcon from '../icons/done.svg';
 import ColorPicker from './ColorPicker';
 
-const NewList = ({ list, handleDeleteList, addNewCard, updateBgColor, updateListTitle, updateCardTitle }) => {
+const NewList = ({ list, handleDeleteList, addNewCard, updateBgColor, updateListTitle, updateCardTitle, handleDeletedCard }) => {
     const [listTitle, setListTitle] = useState(list.title);
     const [cardTitles, setCardTitles] = useState(list.cards);
     const [newCardTitle, setNewCardTitle] = useState('');
@@ -30,7 +30,8 @@ const NewList = ({ list, handleDeleteList, addNewCard, updateBgColor, updateList
     };
     
 
-    const handleEditTitleClick = () => {
+    const handleEditTitleClick = (e) => {
+        e.stopPropagation();
         setIsEditingTitle(!isEditingTitle);
     };
 
@@ -50,8 +51,9 @@ const NewList = ({ list, handleDeleteList, addNewCard, updateBgColor, updateList
     };
 
     const handleDeleteCard = (cardId) => {
-        const updatedList = cardTitles.filter((card) => card._id !== cardId);
-        setCardTitles(updatedList);
+        const updatedCards = cardTitles.filter((card) => card._id !== cardId);
+        setCardTitles(updatedCards);
+        handleDeletedCard(list._id, updatedCards);
     };
 
     const handleEditCard = (cardId, newTitle) => {
@@ -105,9 +107,9 @@ const NewList = ({ list, handleDeleteList, addNewCard, updateBgColor, updateList
                 />
             </div>
             <div className={styles.cardList}>
-                {cardTitles.map((card, index) => (
+                {cardTitles.map((card) => (
                     <Card 
-                    key={index} 
+                    key={card._id} 
                     card={card}
                     handleDeleteCard={() => handleDeleteCard(card._id)}
                     handleEditCard={handleEditCard}
