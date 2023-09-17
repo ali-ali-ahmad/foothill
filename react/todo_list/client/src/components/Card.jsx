@@ -2,15 +2,12 @@ import React, { useState } from 'react';
 import styles from './css/Card.module.css';
 import { icons } from '../data/icons';
 
-
-
 const Card = ({ card, cardEdit, cardDelete }) => {
     const [isEditingTitle, setIsEditingTitle] = useState(false);
     const [editedTitle, setEditedTitle] = useState(card.title);
     const [isDescriptionOpen, setIsDescriptionOpen] = useState(false); 
     const [isEditingDescription, setIsEditingDescription] = useState(false);
     const [editedDescription, setEditedDescription] = useState(card.description || "No description for this card");
-
 
     const handleEditTitleClick = (e) => {
         e.stopPropagation();

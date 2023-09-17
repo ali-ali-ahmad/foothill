@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import Card from './Card';
 import styles from './css/NewList.module.css';
 import ColorPicker from './ColorPicker';
@@ -11,7 +11,10 @@ const NewList = ({
     updateBgColor, 
     updateListTitle, 
     updateCardTitle, 
-    cardDelete 
+    cardDelete,
+    dropInside,
+    dropOutside,
+    moveToListId
 }) => {
     const [listTitle, setListTitle] = useState(list.title);
     const [cardTitles, setCardTitles] = useState(list.cards);
@@ -19,6 +22,38 @@ const NewList = ({
     const [newCardTitle, setNewCardTitle] = useState('');
     const [isEditingTitle, setIsEditingTitle] = useState(false);
     const [showColorPicker, setShowColorPicker] = useState(false);
+    const dragItem = useRef();
+    const dragOverItem = useRef();
+
+    const dragStart = (e, position) => {
+        dragItem.current = position;
+    };
+
+    const dragEnter = (e, position) => {
+        dragOverItem.current = position;
+
+    };
+
+
+    const handleDrop = (cardId) => {
+        if(moveToListId === list._id) {
+            const copyCardTitles = [...cardTitles]; 
+            const dragItemContent = copyCardTitles[dragItem.current];
+            copyCardTitles.splice(dragItem.current, 1);
+            copyCardTitles.splice(dragOverItem.current, 0, dragItemContent);
+            dragItem.current = null;
+            dragOverItem.current = null;
+            setCardTitles(copyCardTitles);
+            dropInside(list._id, copyCardTitles); 
+        } else {
+            const copyCards = [...cardTitles]; 
+            const removedCard = copyCards.filter((card) => card._id !== cardId);
+            
+            setCardTitles(removedCard);
+            dropOutside(list._id, cardId); 
+        }
+    };
+    
 
     const addCard = () => {
         if (newCardTitle) {
@@ -73,7 +108,10 @@ const NewList = ({
     };
 
     return (
-        <div className={styles.container} >
+        <div 
+        className={styles.listContainer} 
+        id={list._id}
+        >
             <div className={styles.listTitle}>
                 {isEditingTitle ? (
                     <div className={styles.editInput}>
@@ -96,7 +134,7 @@ const NewList = ({
                 {showColorPicker && (
                     <ColorPicker
                         onSelectColor={handleColorChange}
-                    />
+                        />
                 )}
             </div>
             <div className={styles.newInput}>
@@ -106,16 +144,25 @@ const NewList = ({
                     placeholder="Enter card title"
                     value={newCardTitle}
                     onChange={(e) => setNewCardTitle(e.target.value)}
-                />
-            </div>
-            <div className={styles.cardList}>
-                {cardTitles.map((card) => (
-                    <Card 
-                    key={card._id} 
-                    card={card}
-                    cardDelete={handleCardDelete}
-                    cardEdit={handleCardEdit}
                     />
+            </div>
+            <div 
+            className={styles.cardList}>
+                {cardTitles.map((card, index) => (
+                    <div
+                    draggable
+                    key={index}
+                    onDragStart={(e) => dragStart(e, index)}
+                    onDragEnter={(e) => dragEnter(e, index)}
+                    onDragEnd={() => handleDrop(card._id)}
+                    >
+                        <Card 
+                        key={card._id} 
+                        card={card}
+                        cardDelete={handleCardDelete}
+                        cardEdit={handleCardEdit}
+                        />
+                    </div>
                 ))}
             </div>
         </div>
