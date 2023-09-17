@@ -40,6 +40,32 @@ const Lists = () => {
         }
     };
 
+    const updateListTitle = (id, newTitle) => {
+
+        const updatedLists = [...lists];
+        const updatedList = updatedLists.find((list) => list._id === id);
+
+        updatedList.title = newTitle;
+        axios.put(`http://localhost:8000/${id}`, updatedList)
+        .then(() => {
+            setLists(updatedLists);
+        })
+        .catch((error) => {
+            console.error('Error adding new list:', error);
+        });
+    };
+
+    const handleListDelete = (listId) => {
+        axios.delete(`http://localhost:8000/${listId}`)
+            .then(() => {
+                const updatedLists = lists.filter((list) => list._id !== listId);
+                setLists(updatedLists);
+            })
+            .catch((error) => {
+                console.error('Error deleting list:', error);
+            });
+    };
+
     const addCard = (id, newCard) => {
 
         const updatedLists = [...lists];
@@ -76,14 +102,12 @@ const Lists = () => {
         });
     };
 
-
-    const updateListTitle = (id, newTitle) => {
-
+    const handleCardDelete = (listId, updatedCards) => {
         const updatedLists = [...lists];
-        const updatedList = updatedLists.find((list) => list._id === id);
-
-        updatedList.title = newTitle;
-        axios.put(`http://localhost:8000/${id}`, updatedList)
+        const updatedList = updatedLists.find((list) => list._id === listId);
+        
+        updatedList.cards = updatedCards;
+        axios.put(`http://localhost:8000/${listId}`, updatedList)
         .then(() => {
             setLists(updatedLists);
         })
@@ -99,31 +123,6 @@ const Lists = () => {
 
         updatedList.bgColor = newColor;
         axios.put(`http://localhost:8000/${id}`, updatedList)
-        .then(() => {
-            setLists(updatedLists);
-        })
-        .catch((error) => {
-            console.error('Error adding new list:', error);
-        });
-    };
-
-    const handleDeleteList = (listId) => {
-        axios.delete(`http://localhost:8000/${listId}`)
-            .then(() => {
-                const updatedLists = lists.filter((list) => list._id !== listId);
-                setLists(updatedLists);
-            })
-            .catch((error) => {
-                console.error('Error deleting list:', error);
-            });
-    };
-
-    const handleDeletedCard = (listId, updatedCards) => {
-        const updatedLists = [...lists];
-        const updatedList = updatedLists.find((list) => list._id === listId);
-        
-        updatedList.cards = updatedCards;
-        axios.put(`http://localhost:8000/${listId}`, updatedList)
         .then(() => {
             setLists(updatedLists);
         })
@@ -157,8 +156,8 @@ const Lists = () => {
                     updateBgColor={updateBgColor}
                     updateListTitle={updateListTitle}
                     updateCardTitle={updateCardTitle}
-                    handleDeletedCard={handleDeletedCard}
-                    handleDeleteList={() => handleDeleteList(list._id)}/>
+                    cardDelete={handleCardDelete}
+                    listDelete={() => handleListDelete(list._id)}/>
                 ))}
             </div>
         </div>

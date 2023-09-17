@@ -8,12 +8,20 @@ import moreIcon from '../icons/more.svg';
 import doneIcon from '../icons/done.svg';
 import ColorPicker from './ColorPicker';
 
-const NewList = ({ list, handleDeleteList, addNewCard, updateBgColor, updateListTitle, updateCardTitle, handleDeletedCard }) => {
+const NewList = ({ 
+    list, 
+    listDelete, 
+    addNewCard, 
+    updateBgColor, 
+    updateListTitle, 
+    updateCardTitle, 
+    cardDelete 
+}) => {
     const [listTitle, setListTitle] = useState(list.title);
     const [cardTitles, setCardTitles] = useState(list.cards);
+    const [backgroundColor, setBackgroundColor] = useState(list.bgColor);
     const [newCardTitle, setNewCardTitle] = useState('');
     const [isEditingTitle, setIsEditingTitle] = useState(false);
-    const [backgroundColor, setBackgroundColor] = useState(list.bgColor);
     const [showColorPicker, setShowColorPicker] = useState(false);
 
 
@@ -29,8 +37,7 @@ const NewList = ({ list, handleDeleteList, addNewCard, updateBgColor, updateList
         }
     };
     
-
-    const handleEditTitleClick = (e) => {
+    const handleTitleEditClick = (e) => {
         e.stopPropagation();
         setIsEditingTitle(!isEditingTitle);
     };
@@ -40,23 +47,23 @@ const NewList = ({ list, handleDeleteList, addNewCard, updateBgColor, updateList
         updateListTitle(list._id, e.target.value);
     };
 
-    const handleMoreIconClick = () => {
+    const handleMoreIcon = () => {
         setShowColorPicker(!showColorPicker);
     };
 
-    const handleColorClick = (color) => {
+    const handleColorChange = (color) => {
         setBackgroundColor(color);
         updateBgColor(list._id, color)
         setShowColorPicker(false);
     };
 
-    const handleDeleteCard = (cardId) => {
+    const handleCardDelete = (cardId) => {
         const updatedCards = cardTitles.filter((card) => card._id !== cardId);
         setCardTitles(updatedCards);
-        handleDeletedCard(list._id, updatedCards);
+        cardDelete(list._id, updatedCards);
     };
 
-    const handleEditCard = (cardId, newTitle, newDescription) => {
+    const handleCardEdit = (cardId, newTitle, newDescription) => {
         const cardIndex = cardTitles.findIndex((card) => card._id === cardId);
         if (cardIndex !== -1) {
             const editedCard = {
@@ -81,19 +88,19 @@ const NewList = ({ list, handleDeleteList, addNewCard, updateBgColor, updateList
                             onChange={handleTitleChange}
                             onBlur={() => setIsEditingTitle(false)}
                         />
-                        <img src={doneIcon} alt="Edit Icon" onClick={handleEditTitleClick} />
+                        <img src={doneIcon} alt="Edit Icon" onClick={handleTitleEditClick} />
                     </div>
                 ) : (
                     <span style={{ backgroundColor }}>{listTitle}</span>
                 )}
                 <div className={styles.titleOption}>
-                    <img src={editIcon} alt="Done Icon" onClick={handleEditTitleClick} />
-                    <img src={deleteIcon} alt="Delete icon" onClick={handleDeleteList}/>
-                    <img src={moreIcon} alt="" onClick={handleMoreIconClick} />
+                    <img src={editIcon} alt="Done Icon" onClick={handleTitleEditClick} />
+                    <img src={deleteIcon} alt="Delete icon" onClick={listDelete}/>
+                    <img src={moreIcon} alt="" onClick={handleMoreIcon} />
                 </div>
                 {showColorPicker && (
                     <ColorPicker
-                        onSelectColor={handleColorClick}
+                        onSelectColor={handleColorChange}
                     />
                 )}
             </div>
@@ -111,8 +118,8 @@ const NewList = ({ list, handleDeleteList, addNewCard, updateBgColor, updateList
                     <Card 
                     key={card._id} 
                     card={card}
-                    handleDeleteCard={handleDeleteCard}
-                    handleEditCard={handleEditCard}
+                    cardDelete={handleCardDelete}
+                    cardEdit={handleCardEdit}
                     />
                 ))}
             </div>

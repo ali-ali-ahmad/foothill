@@ -10,9 +10,6 @@
     position: relative;
 }
 
-
-
-
 .cardTitle {
     border-radius: 5px;
     width: 100%;
@@ -63,6 +60,7 @@
 
 .editInput > img {
     padding: 3px;
+    width: 20px;
     border-radius: 20px;
     border: none;
     cursor: pointer;
@@ -70,7 +68,7 @@
 }
 
 .editInput > img:hover {
-    background-color: #262626;
+    background-color: green;
 }
 
 .cardContent {
@@ -85,7 +83,6 @@
     max-width: 250px;
     font-size: 13px;
 }
-
 
 .descriptionHeader {
     display: flex;
@@ -119,9 +116,9 @@
     background-color: #262626;
     border-radius: 10px;
     gap: 10px;
+    z-index: 1000;
+    box-shadow: 0px 2px 5px 5px grey;
 }
-
-
 
 .textArea {
     outline: none;
@@ -137,7 +134,6 @@
     scrollbar-width: thin;
     scrollbar-color: #ccc transparent;
 }
-
 
 .textArea::-webkit-scrollbar {
     width: 5px; 

@@ -6,7 +6,7 @@ import doneIcon from '../icons/done.svg';
 
 
 
-const Card = ({ card, handleEditCard, handleDeleteCard }) => {
+const Card = ({ card, cardEdit, cardDelete }) => {
     const [isEditingTitle, setIsEditingTitle] = useState(false);
     const [editedTitle, setEditedTitle] = useState(card.title);
     const [isDescriptionOpen, setIsDescriptionOpen] = useState(false); 
@@ -19,9 +19,9 @@ const Card = ({ card, handleEditCard, handleDeleteCard }) => {
         setIsEditingTitle(true);
     };
 
-    const handleDelete = (e) => {
+    const handleCardDelete = (e) => {
         e.stopPropagation();
-        handleDeleteCard(card._id);
+        cardDelete(card._id);
     };
 
     const handleTitleChange = (e) => {
@@ -29,17 +29,15 @@ const Card = ({ card, handleEditCard, handleDeleteCard }) => {
     };
 
     const handleSaveTitle = () => {
-        handleEditCard(card._id, editedTitle, editedDescription);
+        cardEdit(card._id, editedTitle, editedDescription);
         setIsEditingTitle(false);
     };
 
-    const handleContainerClick = () => {
+    const handleCardContainerClick = () => {
         if(!isEditingTitle){
             setIsDescriptionOpen(!isDescriptionOpen); 
         }
     };
-
-
 
     const handleEditDescriptionClick = () => {
         setIsEditingDescription(true);
@@ -51,13 +49,13 @@ const Card = ({ card, handleEditCard, handleDeleteCard }) => {
     };
 
     const handleSaveDescription = () => {
-        handleEditCard(card._id, editedTitle, editedDescription);
+        cardEdit(card._id, editedTitle, editedDescription);
         setIsEditingDescription(false);
     };
 
     return (
         <div className={styles.cardContainer} >
-            <div className={styles.cardTitle} onClick={handleContainerClick}>
+            <div className={styles.cardTitle} onClick={handleCardContainerClick}>
                 {isEditingTitle ? (
                     <div className={styles.editInput}>
                         <input
@@ -73,7 +71,7 @@ const Card = ({ card, handleEditCard, handleDeleteCard }) => {
                 )}
                 <div className={styles.cardOptions}>
                     <img src={editIcon} alt="Edit Icon" onClick={handleEditTitleClick} />
-                    <img src={deleteIcon} alt="Delete icon" onClick={handleDelete}/>
+                    <img src={deleteIcon} alt="Delete icon" onClick={handleCardDelete}/>
                 </div>
             </div>
             {isDescriptionOpen && (
