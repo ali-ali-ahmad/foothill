@@ -110,15 +110,22 @@ const Lists = () => {
     };
 
     const handleListDelete = (listId) => {
-        axios.delete(`http://localhost:8000/${listId}`)
-            .then(() => {
-                const updatedLists = lists.filter((list) => list._id !== listId);
-                setLists(updatedLists);
-            })
-            .catch((error) => {
-                console.error('Error deleting list:', error);
-            });
+        const confirmDelete = window.confirm("Are you sure you want to delete this list?");
+        
+        if (confirmDelete) {
+            axios.delete(`http://localhost:8000/${listId}`)
+                .then(() => {
+                    const updatedLists = lists.filter((list) => list._id !== listId);
+                    setLists(updatedLists);
+                })
+                .catch((error) => {
+                    console.error('Error deleting list:', error);
+                });
+        } else {
+            return
+        }
     };
+
 
     const addCard = (id, newCard) => {
 

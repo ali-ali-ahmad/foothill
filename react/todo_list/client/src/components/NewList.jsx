@@ -88,9 +88,15 @@ const NewList = ({
     };
 
     const handleCardDelete = (cardId) => {
-        const updatedCards = cardTitles.filter((card) => card._id !== cardId);
-        setCardTitles(updatedCards);
-        cardDelete(list._id, updatedCards);
+        const confirmDelete = window.confirm("Are you sure you want to delete this card?");
+
+        if (confirmDelete) {
+            const updatedCards = cardTitles.filter((card) => card._id !== cardId);
+            setCardTitles(updatedCards);
+            cardDelete(list._id, updatedCards);
+        } else {
+            return
+        }
     };
 
     const handleCardEdit = (cardId, newTitle, newDescription) => {
