@@ -42,3 +42,16 @@
     background-color: transparent;
     color: white;
 }
+
+@media (max-width: 600px) {
+    .header {
+        flex-direction: column;
+        padding-bottom: 10px;
+    }
+}
+
+@media (max-width: 480px) {
+    .newCategory {
+        flex-direction: column;
+    }
+}
