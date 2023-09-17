@@ -130,7 +130,10 @@ const NewList = ({
                         <img src={icons.done} alt="Done Icon" onClick={handleTitleEditClick} />
                     </div>
                 ) : (
-                    <span style={{ backgroundColor }}>{listTitle}</span>
+                    <div className={styles.titleAndCount}>
+                        <span style={{ backgroundColor }}>{listTitle}</span>
+                        <span>{cardTitles.length}</span>
+                    </div>
                 )}
                 <div className={styles.titleOption}>
                     <img src={icons.edit} alt="Edit Icon" onClick={handleTitleEditClick} />
