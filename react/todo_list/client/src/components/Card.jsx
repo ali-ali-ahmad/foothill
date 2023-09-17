@@ -1,8 +1,6 @@
 import React, { useState } from 'react';
 import styles from './css/Card.module.css';
-import editIcon from '../icons/edit.svg';
-import deleteIcon from '../icons/delete.svg';
-import doneIcon from '../icons/done.svg';
+import { icons } from '../data/icons';
 
 
 
@@ -64,21 +62,21 @@ const Card = ({ card, cardEdit, cardDelete }) => {
                             onChange={handleTitleChange}
                             onBlur={handleSaveTitle}
                         />
-                        <img src={doneIcon} alt="done Icon" onClick={handleSaveTitle} />
+                        <img src={icons.done} alt="Done Icon" onClick={handleSaveTitle} />
                     </div>
                 ) : (
                     <span>{editedTitle}</span>
                 )}
                 <div className={styles.cardOptions}>
-                    <img src={editIcon} alt="Edit Icon" onClick={handleEditTitleClick} />
-                    <img src={deleteIcon} alt="Delete icon" onClick={handleCardDelete}/>
+                    <img src={icons.edit} alt="Edit Icon" onClick={handleEditTitleClick} />
+                    <img src={icons.remove} alt="Delete icon" onClick={handleCardDelete}/>
                 </div>
             </div>
             {isDescriptionOpen && (
                 <div className={styles.cardContent}>
                     <div className={styles.descriptionHeader}>
                         <p>Description: </p>
-                        <img src={editIcon} alt="Edit Icon" onClick={handleEditDescriptionClick} />
+                        <img src={icons.edit} alt="Edit Icon" onClick={handleEditDescriptionClick} />
                     </div>
                     {isEditingDescription ? (
                         <div className={styles.editDescription}>
@@ -91,7 +89,7 @@ const Card = ({ card, cardEdit, cardDelete }) => {
                                 spellCheck="false"
                             />
                             <img
-                                src={doneIcon}
+                                src={icons.done}
                                 alt="Done Icon"
                                 onClick={handleSaveDescription}
                             />

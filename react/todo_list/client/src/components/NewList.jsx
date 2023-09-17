@@ -1,12 +1,8 @@
 import React, { useState } from 'react';
 import Card from './Card';
 import styles from './css/NewList.module.css';
-import addIcon from '../icons/add.svg';
-import editIcon from '../icons/edit.svg';
-import deleteIcon from '../icons/delete.svg';
-import moreIcon from '../icons/more.svg';
-import doneIcon from '../icons/done.svg';
 import ColorPicker from './ColorPicker';
+import { icons } from '../data/icons';
 
 const NewList = ({ 
     list, 
@@ -23,7 +19,6 @@ const NewList = ({
     const [newCardTitle, setNewCardTitle] = useState('');
     const [isEditingTitle, setIsEditingTitle] = useState(false);
     const [showColorPicker, setShowColorPicker] = useState(false);
-
 
     const addCard = () => {
         if (newCardTitle) {
@@ -88,15 +83,15 @@ const NewList = ({
                             onChange={handleTitleChange}
                             onBlur={() => setIsEditingTitle(false)}
                         />
-                        <img src={doneIcon} alt="Edit Icon" onClick={handleTitleEditClick} />
+                        <img src={icons.done} alt="Done Icon" onClick={handleTitleEditClick} />
                     </div>
                 ) : (
                     <span style={{ backgroundColor }}>{listTitle}</span>
                 )}
                 <div className={styles.titleOption}>
-                    <img src={editIcon} alt="Done Icon" onClick={handleTitleEditClick} />
-                    <img src={deleteIcon} alt="Delete icon" onClick={listDelete}/>
-                    <img src={moreIcon} alt="" onClick={handleMoreIcon} />
+                    <img src={icons.edit} alt="Edit Icon" onClick={handleTitleEditClick} />
+                    <img src={icons.remove} alt="Delete icon" onClick={listDelete}/>
+                    <img src={icons.more} alt="" onClick={handleMoreIcon} />
                 </div>
                 {showColorPicker && (
                     <ColorPicker
@@ -105,7 +100,7 @@ const NewList = ({
                 )}
             </div>
             <div className={styles.newInput}>
-                <img src={addIcon} alt="add Icon" onClick={addCard} />
+                <img src={icons.add} alt="add Icon" onClick={addCard} />
                 <input
                     type="text"
                     placeholder="Enter card title"
