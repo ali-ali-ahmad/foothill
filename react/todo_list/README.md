@@ -1,10 +1,10 @@
 <h1>Todo List App</h1>
 
-<img src="Screenshot.jpg"/>
+<img src="screenshot.jpg"/>
 
 <h2>Overview</h2>
 
-<p>Welcome to <strong>**My Note Keeper**</strong>, a simple web application that allows you to create and manage your notes seamlessly. This project showcases a full-stack application with HTML, CSS, and JavaScript for the front end, Node.js with Express for the back end, and MongoDB for the database.</p>
+<p>Welcome to <strong>**Todo List**</strong>, a simple web application that allows you to create and manage your todo tasks seamlessly. This project showcases a full-stack application with react framework for the front end, Node.js with Express for the back end, and MongoDB for the database.</p>
 
 
 <h2>Running the app:</h2>
@@ -14,11 +14,11 @@
 <p>To access the client side of the app, follow these steps:</p>
 
 <ol>
-    <li>Open <code>index.html</code> in your preferred web browser.</li>
-    <li>This will load the front end interface, where you can interact with your notes.</li>
+    <li>Open your terminal In the client directory</li>
+    <li>Make sure to install the necessary packages <code>npm install</code></li>
+    <li>run <code>npm start</code></li>
+    <li>This will load the front end interface, where you can interact with your tasks.</li>
 </ol>
-
-
 
 <h3>Server Side</h3>
 
@@ -53,7 +53,7 @@ nodemon server.js
 <h2>Technologies Used</h2>
 
 <ol>
-    <li>Front End: HTML, CSS, JavaScript</li>
+    <li>Front End: react</li>
     <li>Back End: Node.js, Express</li>
     <li>Database: MongoDB</li>
 </ol>
