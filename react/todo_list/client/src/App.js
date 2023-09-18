@@ -1,11 +1,11 @@
 import styles from './App.module.css';
-import Lists from './views/Lists';
+import ListsContainer from './views/ListsContainer';
 
 
 const App = () => {
   return (
     <div className={styles.appContainer}>
-      <Lists />
+      <ListsContainer />
     </div>
   );
 }
