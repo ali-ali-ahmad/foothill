@@ -1,4 +1,3 @@
-import axios from 'axios';
 import { colors } from '../data/colors';
 
 export const addNewList = (setLists, newListTitle, setNewListTitle) => {
@@ -11,14 +10,22 @@ export const addNewList = (setLists, newListTitle, setNewListTitle) => {
             bgColor: randomColor,
             cards: []
         };
-        axios.post('http://localhost:8000/', newList)
-            .then((response) => {
-                setLists(prev=>[...prev, response.data]);
-                setNewListTitle('');
-            })
-            .catch((error) => {
-                console.error('Error adding new list:', error);
-            });
+
+        fetch('http://localhost:8000/', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(newList),
+        })
+        .then((response) => response.json())
+        .then((data) => {
+            setLists((prev) => [...prev, data]);
+            setNewListTitle('');
+        })
+        .catch((error) => {
+            console.error('Error adding new list:', error);
+        });
     }
 };
 
@@ -27,12 +34,19 @@ export const updateListTitle = (id, newTitle, lists, setLists) => {
     const updatedList = updatedLists.find((list) => list._id === id);
 
     updatedList.title = newTitle;
-    axios.put(`http://localhost:8000/${id}`, updatedList)
+
+    fetch(`http://localhost:8000/${id}`, {
+        method: 'PUT',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(updatedList),
+    })
     .then(() => {
         setLists(updatedLists);
     })
     .catch((error) => {
-        console.error('Error adding new list:', error);
+        console.error('Error updating list title:', error);
     });
 };
 
@@ -41,31 +55,40 @@ export const deleteList = (listId, lists, setLists) => {
     
     if (confirmDelete) {
         const updatedLists = lists.filter((list) => list._id !== listId);
-        axios.delete(`http://localhost:8000/${listId}`)
-            .then(() => {
-                setLists(updatedLists);
-            })
-            .catch((error) => {
-                console.error('Error deleting list:', error);
-            });
+        
+        fetch(`http://localhost:8000/${listId}`, {
+            method: 'DELETE',
+        })
+        .then(() => {
+            setLists(updatedLists);
+        })
+        .catch((error) => {
+            console.error('Error deleting list:', error);
+        });
     } else {
-        return
+        return;
     }
 };
 
-
-export const addCard = (id, newCard, lists, setLists) => {
+export const addCard = (listId, newCard, lists, setLists) => {
 
     const updatedLists = [...lists];
-    const updatedList = updatedLists.find((list) => list._id === id);
+    const updatedList = updatedLists.find((list) => list._id === listId);
 
     updatedList.cards.push(newCard);
-    axios.put(`http://localhost:8000/${id}`, updatedList)
+
+    fetch(`http://localhost:8000/${listId}`, {
+        method: 'PUT',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(updatedList),
+    })
     .then(() => {
         setLists(updatedLists);
     })
     .catch((error) => {
-        console.error('Error adding new list:', error);
+        console.error('Error adding new card:', error);
     });
 };
 
@@ -81,12 +104,19 @@ export const updateCard = (listId, cardId, newCard, lists, setCards) => {
     updatedCard.description = newCard.description;
 
     updatedList.cards = updatedCards;
-    axios.put(`http://localhost:8000/${listId}`, updatedList)
+
+    fetch(`http://localhost:8000/${listId}`, {
+        method: 'PUT',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(updatedList),
+    })
     .then(() => {
         setCards(updatedCards);
     })
     .catch((error) => {
-        console.error('Error adding new list:', error);
+        console.error('Error updating card:', error);
     });
 };
 
@@ -100,7 +130,14 @@ export const deleteCard = (listId, cardId, lists, setCards) => {
         const updatedListCards = updatedList.cards.filter((card) => card._id !== cardId);
         
         updatedList.cards = updatedListCards;
-        axios.put(`http://localhost:8000/${listId}`, updatedList)
+
+        fetch(`http://localhost:8000/${listId}`, {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(updatedList),
+        })
         .then(() => {
             setCards(updatedListCards);
         })
@@ -112,17 +149,27 @@ export const deleteCard = (listId, cardId, lists, setCards) => {
     }
 };
 
-export const updateBgColor = (id, newColor, lists, setLists) => {
+export const updateBgColor = (listId, newColor, lists, setLists) => {
 
     const updatedLists = [...lists];
-    const updatedList = updatedLists.find((list) => list._id === id);
+    const updatedList = updatedLists.find((list) => list._id === listId);
 
     updatedList.bgColor = newColor;
-    axios.put(`http://localhost:8000/${id}`, updatedList)
+
+    fetch(`http://localhost:8000/${listId}`, {
+        method: 'PUT',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(updatedList),
+    })
     .then(() => {
         setLists(updatedLists);
     })
     .catch((error) => {
-        console.error('Error adding new list:', error);
+        console.error('Error updating title background color:', error);
     });
 };
+
+
+
