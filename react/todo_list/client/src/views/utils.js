@@ -1,4 +1,5 @@
 import { colors } from '../data/colors';
+import { API_BASE_URL } from './config';
 
 export const addNewList = (setLists, newListTitle, setNewListTitle) => {
     const randomIndex = Math.floor(Math.random() * colors.length);
@@ -11,7 +12,7 @@ export const addNewList = (setLists, newListTitle, setNewListTitle) => {
             cards: []
         };
 
-        fetch('http://localhost:8000/', {
+        fetch(`${API_BASE_URL}`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -35,7 +36,7 @@ export const updateListTitle = (id, newTitle, lists, setLists) => {
 
     updatedList.title = newTitle;
 
-    fetch(`http://localhost:8000/${id}`, {
+    fetch(`${API_BASE_URL}/${id}`, {
         method: 'PUT',
         headers: {
             'Content-Type': 'application/json',
@@ -56,7 +57,7 @@ export const deleteList = (listId, lists, setLists) => {
     if (confirmDelete) {
         const updatedLists = lists.filter((list) => list._id !== listId);
         
-        fetch(`http://localhost:8000/${listId}`, {
+        fetch(`${API_BASE_URL}/${listId}`, {
             method: 'DELETE',
         })
         .then(() => {
@@ -77,7 +78,7 @@ export const addCard = (listId, newCard, lists, setLists) => {
 
     updatedList.cards.push(newCard);
 
-    fetch(`http://localhost:8000/${listId}`, {
+    fetch(`${API_BASE_URL}/${listId}`, {
         method: 'PUT',
         headers: {
             'Content-Type': 'application/json',
@@ -105,7 +106,7 @@ export const updateCard = (listId, cardId, newCard, lists, setCards) => {
 
     updatedList.cards = updatedCards;
 
-    fetch(`http://localhost:8000/${listId}`, {
+    fetch(`${API_BASE_URL}/${listId}`, {
         method: 'PUT',
         headers: {
             'Content-Type': 'application/json',
@@ -131,7 +132,7 @@ export const deleteCard = (listId, cardId, lists, setCards) => {
         
         updatedList.cards = updatedListCards;
 
-        fetch(`http://localhost:8000/${listId}`, {
+        fetch(`${API_BASE_URL}/${listId}`, {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json',
@@ -156,7 +157,7 @@ export const updateBgColor = (listId, newColor, lists, setLists) => {
 
     updatedList.bgColor = newColor;
 
-    fetch(`http://localhost:8000/${listId}`, {
+    fetch(`${API_BASE_URL}/${listId}`, {
         method: 'PUT',
         headers: {
             'Content-Type': 'application/json',
@@ -170,6 +171,8 @@ export const updateBgColor = (listId, newColor, lists, setLists) => {
         console.error('Error updating title background color:', error);
     });
 };
+
+
 
 
 
