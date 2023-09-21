@@ -12,13 +12,12 @@ const ListsContainer = () => {
     const [searchResults, setSearchResults] = useState([]);
     const [newListTitle, setNewListTitle] = useState('');
     const [isAddingNewList, setIsAddingNewList] = useState(false);
-
+    const [isSearching, setIsSearching] = useState(false);
 
     useEffect(() => {
         axios.get(API_BASE_URL)
             .then((response) => {
                 setLists(response.data);
-                setSearchResults(response.data);
             })
             .catch((error) => {
                 console.error('Error fetching data:', error);
@@ -26,12 +25,8 @@ const ListsContainer = () => {
     }, []);
 
     const handleAddNewList = () => {
-        setIsAddingNewList(false)
-        addNewList(setLists,newListTitle,setNewListTitle)
-    }
-
-    const handleAddCancel = () => {
-        setIsAddingNewList(false)
+        addNewList(setLists,newListTitle,setNewListTitle);
+        setIsAddingNewList(false);
     }
 
     return (
@@ -39,7 +34,11 @@ const ListsContainer = () => {
             <div className={styles.header}>
                 <h1>ToDo List</h1>
                 <div className={styles.headerButtons}>
-                    <SearchBar lists={lists} setSearchResults={setSearchResults} />
+                    <SearchBar 
+                        lists={lists} 
+                        setSearchResults={setSearchResults} 
+                        setIsSearching={setIsSearching}
+                        />
                     <div className={styles.newCategory}>
                         {isAddingNewList?
                         <div className={styles.newCategoryInput}>
@@ -56,7 +55,7 @@ const ListsContainer = () => {
                                 />
                                 <img 
                                 src={icons.close} alt="Close Icon" 
-                                onClick={handleAddCancel} 
+                                onClick={() => setIsAddingNewList(false)} 
                                 />
                             </div>
                         </div>
@@ -70,14 +69,25 @@ const ListsContainer = () => {
                 </div>
             </div>
             <div className={styles.listsContainer}>
-                {searchResults.map((list) => (
-                    <List
-                    key={list._id}
-                    list={list}
-                    setLists={setLists}
-                    lists={lists}
-                    />
-                ))}
+                {isSearching?
+                    searchResults.map((list) => (
+                        <List
+                        key={list._id}
+                        list={list}
+                        setLists={setLists}
+                        lists={lists}
+                        />
+                    ))
+                    :
+                    lists.map((list) => (
+                        <List
+                        key={list._id}
+                        list={list}
+                        setLists={setLists}
+                        lists={lists}
+                        />
+                    ))
+                }
             </div>
         </div>
     );

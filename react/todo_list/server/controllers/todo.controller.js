@@ -36,27 +36,17 @@ module.exports.deleteTodo = (request, response) => {
         .catch(err => response.status(400).json(err))
 }
 
-// module.exports.searchTodo = (request, response) => {
-//     const query = request.params.query; 
-
-//     const searchRegex = new RegExp(`^${query}`, 'i');
-
-//     Todo.find({ $or: [{ title: searchRegex }, { content: searchRegex }] })
-//         .then(notes => response.json(notes))
-//         .catch(err => response.status(400).json(err));
-
-// };
-
-module.exports.searchTodo = async (request, response) => {
+module.exports.searchTodo = (request, response) => {
     const query = request.params.query;
 
-    try {
-        const todos = await Todo.find({
-            'cards.title': { $regex: `^${query}`, $options: 'i' }
+    Todo.find({
+        'cards.title': { $regex: `^${query}`, $options: 'i' }
+    })
+        .then(todos => {
+            response.json(todos);
+        })
+        .catch(err => {
+            response.status(400).json(err);
         });
-
-        response.json(todos);
-    } catch (err) {
-        response.status(400).json(err);
-    }
 };
+
