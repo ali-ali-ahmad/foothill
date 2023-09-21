@@ -67,11 +67,50 @@
     cursor: pointer;
 }
 
-.cardList {
+.inProgressCardList {
     display: flex;
     flex-direction: column;
     gap: 10px;
-    border-radius: 1px;
+    border-bottom: 1px solid grey;
+    padding-bottom: 10px;
+}
+
+.inProgressHeader {
+    display: flex;
+    justify-content: center;
+    gap: 5px;
+    border-radius: 10px;
+    background-color: #fa5959;
+    padding: 0px 10px 0px 10px;
+    width: fit-content;
+    cursor: pointer;
+    transition: background-color 0.3s ease, cursor 0.3s ease;
+}
+
+.inProgressHeader:hover {
+    background-color: #ff4646;
+}
+
+.completedCardList {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.completedsHeader {
+    display: flex;
+    justify-content: center;
+    gap: 5px;
+    border-radius: 10px;
+    background-color: #00a055;
+    padding: 0px 10px 0px 10px;
+    width: fit-content;
+    cursor: pointer;
+    transition: background-color 0.3s ease, cursor 0.3s ease;
+}
+
+.completedsHeader:hover {
+    background-color: #006d3a;
 }
 
 .editInput {

@@ -5,6 +5,8 @@ import edit from '../icons/edit.svg';
 import more from '../icons/more.svg';
 import search from '../icons/search.svg';
 import close from '../icons/close.svg';
+import expandLess from '../icons/expand_less.svg';
+import expandMore from '../icons/expand_more.svg';
 
 export const icons = {
     done,
@@ -13,5 +15,7 @@ export const icons = {
     edit,
     more,
     search,
-    close
+    close,
+    expandLess,
+    expandMore
 }

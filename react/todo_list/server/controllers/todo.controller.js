@@ -1,11 +1,12 @@
 const {Todo} = require('../models/todo.model');
 
 module.exports.createToDo = (request, response) => {
-    const {title, bgColor, cards} = request.body;
+    const {title, bgColor, cards, isCompleted} = request.body;
     Todo.create({
         title,
         bgColor,
-        cards
+        cards,
+        isCompleted
     })
     .then(todo => response.json(todo))
     .catch(err => response.status(400).json(err));

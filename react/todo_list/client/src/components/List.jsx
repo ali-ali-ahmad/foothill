@@ -17,13 +17,16 @@ const NewList = ({ list, setLists, lists }) => {
     const [newCardTitle, setNewCardTitle] = useState('');
     const [isEditingTitle, setIsEditingTitle] = useState(false);
     const [showColorPicker, setShowColorPicker] = useState(false);
+    const [showProgressCards, setShowProgressCards] = useState(true);
+    const [showCompletedCards, setShowCompletedCards] = useState(false);
 
 
     const addCard = () => {
         if (newCardTitle) {
             const newCard = {
                 title: newCardTitle,
-                description: ""
+                description: "",
+                isCompleted: false
             }
             setCards([...cards, newCard]);
             addNewCard(list._id, newCard, lists, setLists)
@@ -95,17 +98,39 @@ const NewList = ({ list, setLists, lists }) => {
                     onChange={(e) => setNewCardTitle(e.target.value)}
                     />
             </div>
-            <div 
-            className={styles.cardList}>
-                {cards.map((card) => (
-                    <Card 
-                    key={card._id} 
-                    card={card}
-                    lists={lists}
-                    listId={list._id}
-                    setCards={setCards}
+            <div className={styles.inProgressCardList}>
+                <div className={styles.inProgressHeader} onClick={() => setShowProgressCards(!showProgressCards)}>
+                    <span>In progress {cards.filter((card) => card.isCompleted === false).length}</span>
+                    <img src={showProgressCards? icons.expandLess: icons.expandMore} alt="" />
+                </div>
+                {showProgressCards && cards
+                    .filter((card) => card.isCompleted === false)
+                    .map((card) => (
+                    <Card
+                        key={card._id}
+                        card={card}
+                        lists={lists}
+                        listId={list._id}
+                        setCards={setCards}
                     />
-                ))}
+                    ))}
+            </div>
+            <div className={styles.completedCardList}>
+                <div className={styles.completedsHeader} onClick={() => setShowCompletedCards(!showCompletedCards)}>
+                    <span>Completed {cards.filter((card) => card.isCompleted === true).length}</span>
+                    <img src={showCompletedCards? icons.expandLess: icons.expandMore} alt="" />
+                </div>
+                {showCompletedCards && cards
+                    .filter((card) => card.isCompleted === true)
+                    .map((card) => (
+                    <Card
+                        key={card._id}
+                        card={card}
+                        lists={lists}
+                        listId={list._id}
+                        setCards={setCards}
+                    />
+                    ))}
             </div>
         </div>
     );

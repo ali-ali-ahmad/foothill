@@ -116,6 +116,7 @@ export const updateCard = async (listId, cardId, newCard, lists, setCards) => {
 
     updatedCard.title = newCard.title;
     updatedCard.description = newCard.description;
+    updatedCard.isCompleted = newCard.isCompleted;
 
     updatedList.cards = updatedCards;
 

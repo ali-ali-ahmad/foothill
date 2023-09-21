@@ -8,11 +8,14 @@ const Card = ({ card, lists, listId, setCards }) => {
     const [cardTitle, setCardTitle] = useState(card.title);
     const [cardDescription, setCardDescription] = useState(card.description || "No description for this card");
     const [isDescriptionOpen, setIsDescriptionOpen] = useState(false); 
+    const [isCompleted, setIsCompleted] = useState(card.isCompleted); 
     const [isEditingDescription, setIsEditingDescription] = useState(false);
+
 
     const editedCard = {
         title: cardTitle,
-        description: cardDescription
+        description: cardDescription,
+        isCompleted: isCompleted
     }
 
     const handleEditTitle = (e) => {
@@ -42,56 +45,78 @@ const Card = ({ card, lists, listId, setCards }) => {
         setIsEditingDescription(false);
     };
 
+    const handleCheckbox = (e) => {
+        e.stopPropagation();
+        
+        const updatedIsCompleted = !isCompleted; 
+        setIsCompleted(updatedIsCompleted);
+
+        const updatedCard = {
+            title: cardTitle,
+            description: cardDescription,
+            isCompleted: updatedIsCompleted,
+        };
+
+        updateCard(listId, card._id, updatedCard, lists, setCards);
+    };
+
     return (
-        <div className={styles.cardContainer} >
-            <div className={styles.cardTitle} onClick={handleCardContainerClick}>
-                {isEditingTitle ? (
-                    <div className={styles.editInput}>
-                        <input
-                            type="text"
-                            value={cardTitle}
-                            onChange={(e) => setCardTitle(e.target.value)}
-                            onBlur={handleSaveTitle}
-                        />
-                        <img src={icons.done} alt="Done Icon" onClick={handleSaveTitle} />
-                    </div>
-                ) : (
-                    <span>{cardTitle}</span>
-                )}
-                <div className={styles.cardOptions}>
-                    <img src={icons.edit} alt="Edit Icon" onClick={handleEditTitle} />
-                    <img src={icons.remove} alt="Delete icon" onClick={handleCardDelete}/>
-                </div>
-            </div>
-            {isDescriptionOpen && (
-                <div className={styles.cardContent}>
-                    <div className={styles.descriptionHeader}>
-                        <p>Description: </p>
-                        <img src={icons.edit} alt="Edit Icon" onClick={() => setIsEditingDescription(true)} />
-                    </div>
-                    {isEditingDescription ? (
-                        <div className={styles.editDescription}>
-                            <span>Edit Description</span>
-                            <textarea 
-                                className={styles.textArea}
-                                value={cardDescription}
-                                onChange={(e) => setCardDescription(e.target.value)}
-                                onBlur={handleSaveDescription}
-                                spellCheck="false"
+        <div className={styles.container}>
+            <input 
+            type="checkbox" 
+            checked={isCompleted} 
+            onChange={handleCheckbox}
+            />
+            <div className={styles.cardContainer} >
+                <div className={styles.cardTitle} onClick={handleCardContainerClick}>
+                    {isEditingTitle ? (
+                        <div className={styles.editInput}>
+                            <input
+                                type="text"
+                                value={cardTitle}
+                                onChange={(e) => setCardTitle(e.target.value)}
+                                onBlur={handleSaveTitle}
                             />
-                            <img
-                                src={icons.done}
-                                alt="Done Icon"
-                                onClick={handleSaveDescription}
-                            />
+                            <img src={icons.done} alt="Done Icon" onClick={handleSaveTitle} />
                         </div>
                     ) : (
-                        <div className={styles.description}>
-                            <p>{cardDescription}</p>
-                        </div>
+                        <span>{cardTitle}</span>
                     )}
+                    <div className={styles.cardOptions}>
+                        <img src={icons.edit} alt="Edit Icon" onClick={handleEditTitle} />
+                        <img src={icons.remove} alt="Delete icon" onClick={handleCardDelete}/>
+                    </div>
                 </div>
-            )}
+                {isDescriptionOpen && (
+                    <div className={styles.cardContent}>
+                        <div className={styles.descriptionHeader}>
+                            <p>Description: </p>
+                            <img src={icons.edit} alt="Edit Icon" onClick={() => setIsEditingDescription(true)} />
+                        </div>
+                        {isEditingDescription ? (
+                            <div className={styles.editDescription}>
+                                <span>Edit Description</span>
+                                <textarea 
+                                    className={styles.textArea}
+                                    value={cardDescription}
+                                    onChange={(e) => setCardDescription(e.target.value)}
+                                    onBlur={handleSaveDescription}
+                                    spellCheck="false"
+                                />
+                                <img
+                                    src={icons.done}
+                                    alt="Done Icon"
+                                    onClick={handleSaveDescription}
+                                />
+                            </div>
+                        ) : (
+                            <div className={styles.description}>
+                                <p>{cardDescription}</p>
+                            </div>
+                        )}
+                    </div>
+                )}
+            </div>
         </div>
     );
 };

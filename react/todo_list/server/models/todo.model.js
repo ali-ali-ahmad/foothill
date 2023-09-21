@@ -12,7 +12,8 @@ const TodoSchema = new mongoose.Schema({
     cards: [
         {
             title: {type: String},
-            description: {type: String}
+            description: {type: String},
+            isCompleted: {type: Boolean}
         }
     ]
 }, {timestamps: true});

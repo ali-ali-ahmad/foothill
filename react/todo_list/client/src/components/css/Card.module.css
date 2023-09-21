@@ -1,3 +1,13 @@
+.container {
+    display: flex;
+    justify-content: flex-start;
+    gap: 3px;
+}
+
+.container > input {
+    flex: 1;
+}
+
 .cardContainer {
     border: 1px solid #262626;
     background-color: #262626;
@@ -8,6 +18,7 @@
     align-items: center;
     justify-content: center;
     position: relative;
+    flex: 20;
 }
 
 .cardTitle {
@@ -28,6 +39,7 @@
 .cardOptions {
     display: flex;
     gap: 2px;
+    /* flex: 1; */
 }
 
 .cardOptions > img {
