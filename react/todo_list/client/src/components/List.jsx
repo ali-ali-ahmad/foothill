@@ -18,6 +18,7 @@ const NewList = ({ list, setLists, lists }) => {
     const [isEditingTitle, setIsEditingTitle] = useState(false);
     const [showColorPicker, setShowColorPicker] = useState(false);
 
+
     const addCard = () => {
         if (newCardTitle) {
             const newCard = {

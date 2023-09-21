@@ -174,5 +174,30 @@ export const updateBgColor = (listId, newColor, lists, setLists) => {
 
 
 
+export const searchCards = (searchQuery, lists, setSearchResults) => {
+
+    if (!searchQuery) {
+        setSearchResults(lists);
+        return;
+    }
+
+    const results = lists.filter((list) =>
+        list.cards.some((card) =>
+            card.title.toLowerCase().startsWith(searchQuery.toLowerCase())
+        )
+    );
 
 
+    fetch(`${API_BASE_URL}/search/${searchQuery}`, {
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json',
+        }
+    })
+    .then(() => {
+        setSearchResults(results);
+    })
+    .catch((error) => {
+        console.error('Error searching cards:', error);
+    });
+};
