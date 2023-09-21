@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-const TodoSchema = new mongoose.Schema({
+const ListSchema = new mongoose.Schema({
     title: {
         type: String,
         minlength:3,
@@ -17,4 +17,4 @@ const TodoSchema = new mongoose.Schema({
         }
     ]
 }, {timestamps: true});
-module.exports.Todo = mongoose.model('Todo', TodoSchema)
+module.exports.List = mongoose.model('List', ListSchema)
