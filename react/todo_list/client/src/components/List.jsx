@@ -100,7 +100,7 @@ const NewList = ({ list, setLists, lists }) => {
             </div>
             <div className={styles.inProgressCardList}>
                 <div className={styles.inProgressHeader} onClick={() => setShowProgressCards(!showProgressCards)}>
-                    <span>In progress {cards.filter((card) => card.isCompleted === false).length}</span>
+                    <span>In progress: {cards.filter((card) => card.isCompleted === false).length}</span>
                     <img src={showProgressCards? icons.expandLess: icons.expandMore} alt="" />
                 </div>
                 {showProgressCards && cards
@@ -117,7 +117,7 @@ const NewList = ({ list, setLists, lists }) => {
             </div>
             <div className={styles.completedCardList}>
                 <div className={styles.completedsHeader} onClick={() => setShowCompletedCards(!showCompletedCards)}>
-                    <span>Completed {cards.filter((card) => card.isCompleted === true).length}</span>
+                    <span>Completed: {cards.filter((card) => card.isCompleted === true).length}</span>
                     <img src={showCompletedCards? icons.expandLess: icons.expandMore} alt="" />
                 </div>
                 {showCompletedCards && cards

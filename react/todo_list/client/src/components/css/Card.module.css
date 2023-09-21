@@ -39,7 +39,6 @@
 .cardOptions {
     display: flex;
     gap: 2px;
-    /* flex: 1; */
 }
 
 .cardOptions > img {

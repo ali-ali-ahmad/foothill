@@ -1,4 +1,3 @@
-// ColorPicker.js
 import React from 'react';
 import styles from './css/ColorPicker.module.css';
 import { colors } from '../data/colors';
@@ -14,7 +13,7 @@ const ColorPicker = ({ onSelectColor }) => {
                         key={index}
                         className={styles.colorOption}
                         onClick={() => onSelectColor(color)}
-                    >
+                        >
                         <div style={{ backgroundColor: color }}></div>
                         <p>{color}</p>
                     </div>
