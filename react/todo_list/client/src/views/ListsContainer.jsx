@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import styles from './css/ListsContainer.module.css';
 import List from '../components/List';
-import axios from 'axios';
 import { addNewList } from './utils';
 import { API_BASE_URL } from './config';
 import SearchBar from '../components/SearchBar';
@@ -15,13 +14,20 @@ const ListsContainer = () => {
     const [isSearching, setIsSearching] = useState(false);
 
     useEffect(() => {
-        axios.get(API_BASE_URL)
-            .then((response) => {
-                setLists(response.data);
-            })
-            .catch((error) => {
-                console.error('Error fetching data:', error);
-            });
+        const fetchData = async () => {
+        try {
+            const response = await fetch(API_BASE_URL);
+            if (!response.ok) {
+                throw new Error(`Error fetching data: ${response.status} ${response.statusText}`);
+            }
+            const data = await response.json();
+            setLists(data);
+        } catch (error) {
+            console.error('Error fetching data:', error.message);
+        }
+        };
+
+        fetchData();
     }, []);
 
     const handleAddNewList = () => {
