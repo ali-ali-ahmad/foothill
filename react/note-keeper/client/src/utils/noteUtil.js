@@ -34,7 +34,31 @@ export const addNewNote = (newNote, setNotes) => {
 
 };
 
-export const deleteNote = async (noteId, notes, setNotes) => {
+export const noteUpdate = async (noteId, newNote, notes, setNotes) => {
+    const updatedNotes = [...notes];
+    const updatedNote = updatedNotes.find((note) => note._id === noteId);
+
+    updatedNote.title = newNote.title;
+    updatedNote.content = newNote.content;
+
+    try {
+        const response = await fetch(`${API_BASE_URL}/${noteId}`, {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(updatedNote),
+        });
+        if (!response.ok) {
+            throw new Error(`HTTP error! Status: ${response.status}`);
+        }
+        setNotes(updatedNotes);
+    } catch (error) {
+        console.error('Error updating note:', error);
+    }
+};
+
+export const noteDelete = async (noteId, notes, setNotes) => {
     
     const updatedNotes = notes.filter((note) => note._id !== noteId);
 

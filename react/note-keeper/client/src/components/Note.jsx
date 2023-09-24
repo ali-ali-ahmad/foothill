@@ -3,11 +3,18 @@ import styles from './css/Note.module.css';
 import { formatedDate } from '../utils/noteUtil';
 import { icons } from '../data/icons';
 import NoteDelete from './NoteDelete';
+import NoteUpdate from './NoteUpdate';
 
 const  Note = ({note, notes, setNotes}) => {
-    const [title, setTitle] = useState(note.title);
-    const [content, setContent] = useState(note.content);
+    // const [title, setTitle] = useState(note.title);
+    // const [content, setContent] = useState(note.content);
     const [isDeleting, setIsDeleting] = useState(false);
+    const [isEditing, setIsEditing] = useState(false);
+
+    const handleEdit = (e) => {
+        e.stopPropagation();
+        setIsEditing(true);
+    }
 
     const handleDelete = (e) => {
         e.stopPropagation();
@@ -16,9 +23,9 @@ const  Note = ({note, notes, setNotes}) => {
 
     return (
         <>
-            <div className={styles.noteContainer}>
-                <p className={styles.noteTitle}>{title}</p>
-                <p className={styles.noteContent}>{content}</p>
+            <div className={styles.noteContainer} onClick={handleEdit}>
+                <p className={styles.noteTitle}>{note.title}</p>
+                <p className={styles.noteContent}>{note.content}</p>
                 <div>
                     <p className={styles.noteDate}>{formatedDate(note.createdAt)}</p>
                     <img 
@@ -37,6 +44,17 @@ const  Note = ({note, notes, setNotes}) => {
                 noteId={note._id}
                 notes={notes}
                 setNotes={setNotes}
+                />
+            }
+            {
+                isEditing && 
+                <NoteUpdate
+                key={note._id}
+                setIsEditing={setIsEditing}
+                noteId={note._id}
+                notes={notes}
+                setNotes={setNotes}
+                note={note}
                 />
             }
         </>

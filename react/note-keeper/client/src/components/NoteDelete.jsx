@@ -1,11 +1,11 @@
 import styles from './css/NoteDelete.module.css';
-import { deleteNote } from '../utils/noteUtil';
+import { noteDelete } from '../utils/noteUtil';
 
 const  NoteDelete = ({setIsDeleting, noteId, notes, setNotes}) => {
 
     const handleDeletion = (e) => {
         e.stopPropagation();
-        deleteNote(noteId, notes, setNotes);
+        noteDelete(noteId, notes, setNotes);
         setIsDeleting(false);
     }
 

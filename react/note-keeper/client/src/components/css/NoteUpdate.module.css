@@ -1,0 +1,58 @@
+
+.updateContainer {
+    position: fixed;
+    width: 500px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: antiquewhite;
+    padding: 10px;
+    z-index: 100;
+    border-radius: 10px;
+}
+
+.updateContainer > input {
+    border: none;
+    outline: none;
+    background-color: transparent;
+    font-size: 20px;
+    padding-left: 10px;
+}
+
+.updateContainer > p {
+    padding: 5px 10px 5px 10px;
+    background-color: #ebebeb;
+}
+
+.actionButtons {
+    display: flex;
+    align-self: flex-end;
+    gap: 5px;
+}
+
+.closeButton {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    color: red;
+    transition: background-color 0.3s ease, cursor 0.3s ease; 
+}
+
+.closeButton:hover {
+    font-weight: 600;
+}
+
+.doneButton {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease, cursor 0.3s ease; 
+}
+
+.doneButton:hover {
+    font-weight: 600;
+}
