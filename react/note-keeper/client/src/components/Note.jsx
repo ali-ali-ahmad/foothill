@@ -1,8 +1,9 @@
 import { useState } from 'react';
 import styles from './css/Note.module.css';
 
-const  Note = ({title, content}) => {
-    const [note, setNote] = useState();
+const  Note = ({note}) => {
+    const [title, setTitle] = useState(note.title);
+    const [content, setContent] = useState(note.content);
 
     return (
         <div className={styles.noteContainer}>

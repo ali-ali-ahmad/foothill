@@ -1,6 +1,7 @@
 .container {
-    display: flex;
+    /* display: flex;
     flex-direction: column;
+    align-items: center; */
 }
 
 .container > header {
@@ -13,4 +14,21 @@
 
 .container > header > h1 {
     font-size: 25px;
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 10px;
+    gap: 10px;
+}
+
+.notesContainer {
+    align-self: flex-start;
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    flex-wrap: wrap;
+    padding: 10px;
 }

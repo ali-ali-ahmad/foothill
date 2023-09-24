@@ -1,18 +1,25 @@
 import {useState} from 'react';
 import styles from './css/NoteNewInput.module.css';
+import { addNewNote } from '../utils/noteUtil';
 
-const  NoteNewInput = () => {
+const NoteNewInput = ({setNotes}) => {
     const [isAddingNote, setIsAddingNote] = useState(false);
-    const [newTitle, setNewTitle] = useState();
-    const [newContent, setNewContent] = useState();
+    const [newTitle, setNewTitle] = useState('');
+    const [newContent, setNewContent] = useState('');
 
-
-    const handleNewNote = () => {
-        const newNote = {
-            title: newTitle,
-            content: newContent
+    const handleNewNote = (e) => {
+        e.stopPropagation();
+        if (newTitle) {
+            const newNote = {
+                title: newTitle,
+                content: newContent
+            }
+            addNewNote(newNote, setNotes)
+            setNewTitle('');
+            setNewContent('');
+            setIsAddingNote(false);
         }
-    }
+    };
 
     const handleCloseContainer = (e) => {
         e.stopPropagation();
@@ -23,6 +30,7 @@ const  NoteNewInput = () => {
         <div className={styles.newInputContainer} onClick={() => setIsAddingNote(true)}>
             <input 
                 className={styles.titleInput}
+                value={newTitle}
                 type="text" 
                 placeholder='Title'
                 
@@ -33,6 +41,7 @@ const  NoteNewInput = () => {
                 <div className={styles.contentContainer}>
                     <input 
                         className={styles.contentInput}
+                        value={newContent}
                         type="text" 
                         placeholder='Take a note...'
                         onChange={(e) => setNewContent(e.target.value)}
