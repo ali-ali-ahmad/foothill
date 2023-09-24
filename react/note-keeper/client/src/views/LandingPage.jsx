@@ -7,6 +7,8 @@ import { API_BASE_URL } from '../data/config';
 
 const  LandingPage = () => {
     const [notes, setNotes] = useState([]);
+    const [searchResults, setSearchResults] = useState([]);
+    const [isSearching, setIsSearching] = useState(false);
 
 
     useEffect(() => {
@@ -30,21 +32,36 @@ const  LandingPage = () => {
         <div className={styles.container}>
             <header>
                 <h1>My Note Keeper</h1>
-                <SearchBar />
+                <SearchBar
+                notes={notes}
+                setSearchResults={setSearchResults}
+                isSearching={isSearching}
+                setIsSearching={setIsSearching}
+                />
             </header>
             <main>
                 <NoteNewInput
                     setNotes={setNotes}
                 />
                 <div className={styles.notesContainer}>
-                    {notes.map((note) => (
-                        <Note
-                        key={note._id}
-                        note={note}
-                        notes={notes}
-                        setNotes={setNotes}
-                        />
-                    ))}
+                    {isSearching?
+                        searchResults.map((note) => (
+                            <Note
+                            key={note._id}
+                            note={note}
+                            notes={notes}
+                            setNotes={setNotes}
+                            />
+                        )):
+                        notes.map((note) => (
+                            <Note
+                            key={note._id}
+                            note={note}
+                            notes={notes}
+                            setNotes={setNotes}
+                            />
+                        ))
+                    }
                 </div>
             </main>
         </div>

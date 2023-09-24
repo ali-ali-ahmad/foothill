@@ -75,3 +75,26 @@ export const noteDelete = async (noteId, notes, setNotes) => {
     }
 
 };
+
+export const searchNote = async (searchQuery, notes, setSearchResults) => {
+    if (!searchQuery) {
+        setSearchResults(notes);
+        return;
+    }
+
+    try {
+        const response = await fetch(`${API_BASE_URL}/search/${searchQuery}`, {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+        });
+        if (!response.ok) {
+            throw new Error('Network response was not ok');
+        }
+        const data = await response.json();
+        setSearchResults(data);
+    } catch (error) {
+        console.error('Error searching notes:', error);
+    }
+};
