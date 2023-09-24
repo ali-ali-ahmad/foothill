@@ -1,20 +1,23 @@
 import styles from './css/NoteUpdate.module.css';
 import { useState } from 'react';
 import { noteUpdate, formatedDate } from '../utils/noteUtil';
+import ColorPicker from './ColorPicker';
 
 const NoteUpdate = ({ setIsEditing, noteId, notes, setNotes, note }) => {
     const [title, setTitle] = useState(note.title);
     const [content, setContent] = useState(note.content);
-    // const [isTitleEditable, setIsTitleEditable] = useState(false);
-    // const [isContentEditable, setIsContentEditable] = useState(false);
+    const [backgroundColor, setBackgroundColor] = useState(note.backgroundColor);
+    const [colorList, setColorList] = useState(false);
 
     const handleUpdate = (e) => {
         e.stopPropagation();
 
         const updatedNote = {
             title: title,
-            content: content
+            content: content,
+            backgroundColor: backgroundColor
         }
+        console.log(updatedNote);
 
         noteUpdate(noteId, updatedNote, notes, setNotes)
         setIsEditing(false);
@@ -25,21 +28,10 @@ const NoteUpdate = ({ setIsEditing, noteId, notes, setNotes, note }) => {
         setIsEditing(false);
     };
 
-    // const handleTitleEdit = () => {
-    //     setIsTitleEditable(true);
-    // };
-
-    // const handleContentEdit = () => {
-    //     setIsContentEditable(true);
-    // };
-
-    // const handleTitleChange = (e) => {
-    //     setTitle(e.target.textContent);
-    // };
-
-    // const handleContentChange = (e) => {
-    //     setContent(e.target.textContent);
-    // };
+    const handleColorsListOpen = (e) => {
+        e.stopPropagation();
+        setColorList(!colorList);
+    };
 
     return (
         <div className={styles.updateContainer}>
@@ -63,6 +55,13 @@ const NoteUpdate = ({ setIsEditing, noteId, notes, setNotes, note }) => {
                 <button type='button' className={styles.doneButton} onClick={handleUpdate}>
                 Done
                 </button>
+            </div>
+            <div className={styles.colorSelector} style={{ backgroundColor }} onClick={handleColorsListOpen}>
+                {colorList && 
+                <ColorPicker
+                setBackgroundColor={setBackgroundColor}
+                />
+                }
             </div>
         </div>
     );

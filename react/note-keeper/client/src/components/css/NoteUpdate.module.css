@@ -13,6 +13,7 @@
     padding: 10px;
     z-index: 100;
     border-radius: 10px;
+    /* position: relative; */
 }
 
 .updateContainer > input {
@@ -55,4 +56,14 @@
 
 .doneButton:hover {
     font-weight: 600;
+}
+
+.colorSelector {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    border-radius: 100%;
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
 }

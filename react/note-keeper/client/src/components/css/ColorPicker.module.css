@@ -1,0 +1,37 @@
+.colorsContainer {
+    position: fixed;
+    background-color: #575757;
+    top: 50px;
+    right: 0;
+    width: 100px;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    border-radius: 10px;
+    z-index: 1000;
+}
+
+.colorsContainer > span {
+    border-bottom: 1px solid grey;
+}
+
+.colorOption {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 10px;
+    padding-left: 10px;
+    line-height: 0;
+    cursor: pointer;
+    transition: background-color 0.3s ease, cursor 0.3s ease; 
+}
+
+.colorOption:hover {
+    background-color: #262626;
+}
+
+.colorOption div {
+    width: 20px;
+    height: 20px;
+    border-radius: 30px;
+}

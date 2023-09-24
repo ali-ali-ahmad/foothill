@@ -7,6 +7,9 @@ const NoteSchema = new mongoose.Schema({
     },
     content: {
         type: String,
+    },
+    backgroundColor: {
+        type: String,
     }
 }, {timestamps: true});
 module.exports.Note = mongoose.model('Note', NoteSchema)

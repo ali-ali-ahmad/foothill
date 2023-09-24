@@ -1,6 +1,7 @@
 import {useState} from 'react';
 import styles from './css/NoteNewInput.module.css';
 import { addNewNote } from '../utils/noteUtil';
+import { colors } from '../data/colors';
 
 const NoteNewInput = ({setNotes}) => {
     const [isAddingNote, setIsAddingNote] = useState(false);
@@ -8,11 +9,15 @@ const NoteNewInput = ({setNotes}) => {
     const [newContent, setNewContent] = useState('');
 
     const handleNewNote = (e) => {
+        const randomIndex = Math.floor(Math.random() * colors.length);
+        const randomColor = colors[randomIndex];
+
         e.stopPropagation();
         if (newTitle) {
             const newNote = {
                 title: newTitle,
-                content: newContent
+                content: newContent,
+                backgroundColor: randomColor
             }
             addNewNote(newNote, setNotes)
             setNewTitle('');

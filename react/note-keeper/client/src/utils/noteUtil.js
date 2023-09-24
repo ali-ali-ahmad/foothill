@@ -1,4 +1,3 @@
-
 import { API_BASE_URL } from "../data/config";
 
 export const formatedDate = (timestamp) => {
@@ -40,6 +39,7 @@ export const noteUpdate = async (noteId, newNote, notes, setNotes) => {
 
     updatedNote.title = newNote.title;
     updatedNote.content = newNote.content;
+    updatedNote.backgroundColor = newNote.backgroundColor;
 
     try {
         const response = await fetch(`${API_BASE_URL}/${noteId}`, {

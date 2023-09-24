@@ -6,8 +6,6 @@ import NoteDelete from './NoteDelete';
 import NoteUpdate from './NoteUpdate';
 
 const  Note = ({note, notes, setNotes}) => {
-    // const [title, setTitle] = useState(note.title);
-    // const [content, setContent] = useState(note.content);
     const [isDeleting, setIsDeleting] = useState(false);
     const [isEditing, setIsEditing] = useState(false);
 
@@ -23,7 +21,7 @@ const  Note = ({note, notes, setNotes}) => {
 
     return (
         <>
-            <div className={styles.noteContainer} onClick={handleEdit}>
+            <div className={styles.noteContainer} onClick={handleEdit} style={{ backgroundColor: note.backgroundColor }}>
                 <p className={styles.noteTitle}>{note.title}</p>
                 <p className={styles.noteContent}>{note.content}</p>
                 <div>
