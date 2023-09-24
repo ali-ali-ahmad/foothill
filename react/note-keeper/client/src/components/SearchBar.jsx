@@ -6,7 +6,7 @@ const  SearchBar = () => {
     const [searchQuery, setSearchQuery] = useState();
 
     return (
-        <div className={styles.container}>
+        <div className={styles.searchContainer}>
             <img src={icons.search} alt="Search Icon" />
             <input 
                 type="text" 
