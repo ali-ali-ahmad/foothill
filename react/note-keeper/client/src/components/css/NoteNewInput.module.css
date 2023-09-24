@@ -1,0 +1,53 @@
+.newInputContainer {
+    box-shadow: 1px 5px 1px 1px grey;
+    border-radius: 10px;
+    padding: 10px;
+    width: 400px;
+    border: 1px solid grey;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.contentContainer {
+    display: flex;
+    flex-direction: column;
+}
+
+.titleInput {
+    border: none;
+    outline: none;
+}
+
+.contentInput {
+    border: none;
+    outline: none;
+}
+
+.actionButtons {
+    display: flex;
+    justify-content: flex-end;
+    gap: 5px;
+}
+
+.addButton {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease, cursor 0.3s ease; 
+}
+
+.addButton:hover {
+    color: aqua;
+}
+
+.closeButton {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease, cursor 0.3s ease; 
+}
+
+.closeButton:hover {
+    color: aqua;
+}
