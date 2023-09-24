@@ -33,3 +33,21 @@ export const addNewNote = (newNote, setNotes) => {
     }
 
 };
+
+export const deleteNote = async (noteId, notes, setNotes) => {
+    
+    const updatedNotes = notes.filter((note) => note._id !== noteId);
+
+    try {
+        const response = await fetch(`${API_BASE_URL}/${noteId}`, {
+            method: 'DELETE',
+        });
+        if (!response.ok) {
+            throw new Error(`HTTP error! Status: ${response.status}`);
+        }
+        setNotes(updatedNotes);
+    } catch (error) {
+        console.error('Error deleting note:', error);
+    }
+
+};

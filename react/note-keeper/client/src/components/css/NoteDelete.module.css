@@ -1,0 +1,48 @@
+
+.deleteContainer {
+    position: fixed;
+    width: 500px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: antiquewhite;
+    padding: 10px;
+    z-index: 100;
+    line-height: 0;
+    border-radius: 10px;
+}
+
+.actionButtons {
+    display: flex;
+    align-self: flex-end;
+    gap: 5px;
+    margin-top: 20px;
+}
+
+.closeButton {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    transition: background-color 0.3s ease, cursor 0.3s ease; 
+}
+
+.closeButton:hover {
+    font-weight: 600;
+}
+
+.deleteButton {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    color: red;
+    transition: background-color 0.3s ease, cursor 0.3s ease; 
+}
+
+.deleteButton:hover {
+    font-weight: 600;
+}

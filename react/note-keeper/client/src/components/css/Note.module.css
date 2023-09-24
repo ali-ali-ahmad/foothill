@@ -3,4 +3,31 @@
     width: 200px;
     height: 200px;
     border-radius: 10px;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    text-align: left;
+    padding: 5px;
+}
+
+.noteContainer > div {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.noteDate {
+    background-color: #ebebeb;
+    padding: 2px 4px 2px 4px;
+    border-radius: 10px;
+}
+
+.deleteIcon {
+    opacity: 0; 
+    transition: opacity 0.3s ease-in-out;
+}
+
+.noteContainer:hover .deleteIcon {
+    opacity: 1;
 }

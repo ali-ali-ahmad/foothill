@@ -41,6 +41,8 @@ const  LandingPage = () => {
                         <Note
                         key={note._id}
                         note={note}
+                        notes={notes}
+                        setNotes={setNotes}
                         />
                     ))}
                 </div>
