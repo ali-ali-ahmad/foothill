@@ -2,9 +2,9 @@ import React, { useState, useEffect } from 'react';
 import styles from './css/ListsContainer.module.css';
 import List from '../components/List';
 import { addNewList } from './utils';
-import { API_BASE_URL } from './config';
 import SearchBar from '../components/SearchBar';
 import { icons } from '../data/icons';
+import { getAllLists } from './utils';
 
 const ListsContainer = () => {
     const [lists, setLists] = useState([]);
@@ -12,28 +12,16 @@ const ListsContainer = () => {
     const [newListTitle, setNewListTitle] = useState('');
     const [isAddingNewList, setIsAddingNewList] = useState(false);
     const [isSearching, setIsSearching] = useState(false);
-
-    useEffect(() => {
-        const fetchData = async () => {
-        try {
-            const response = await fetch(API_BASE_URL);
-            if (!response.ok) {
-                throw new Error(`Error fetching data: ${response.status} ${response.statusText}`);
-            }
-            const data = await response.json();
-            setLists(data);
-        } catch (error) {
-            console.error('Error fetching data:', error.message);
-        }
-        };
-
-        fetchData();
-    }, []);
-
+    
     const handleAddNewList = () => {
         addNewList(setLists,newListTitle,setNewListTitle);
         setIsAddingNewList(false);
     }
+    
+    useEffect(() => {
+        getAllLists(setLists);
+    }, []);
+
 
     return (
         <div className={styles.container}>
@@ -41,7 +29,6 @@ const ListsContainer = () => {
                 <h1>ToDo List</h1>
                 <div className={styles.headerButtons}>
                     <SearchBar 
-                        lists={lists} 
                         setSearchResults={setSearchResults} 
                         setIsSearching={setIsSearching}
                         />

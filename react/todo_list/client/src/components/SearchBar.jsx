@@ -3,17 +3,17 @@ import { icons } from '../data/icons';
 import styles from './css/SearchBar.module.css';
 import { searchCards } from '../views/utils';
 
-const SearchBar = ({lists, setSearchResults, setIsSearching}) => {
+const SearchBar = ({setSearchResults, setIsSearching}) => {
     const [isSearchingCards, setIsSearchingCards] = useState(false);
 
 
     const handleSearch = (e) => {
         e.stopPropagation();
         setIsSearching(true);
-        searchCards(e.target.value, lists, setSearchResults);
+        searchCards(e.target.value, setSearchResults, setIsSearching);
     };
 
-    const handleTitleDoneIcon = (e) => {
+    const handleDoneIcon = (e) => {
         e.stopPropagation();
         setIsSearchingCards(false);
         setIsSearching(false);
@@ -28,9 +28,8 @@ const SearchBar = ({lists, setSearchResults, setIsSearching}) => {
                             type="text" 
                             id="search"
                             placeholder="Search Cards"
-                            onChange={handleSearch}
-                            onBlur={handleTitleDoneIcon}/>
-                        <img src={icons.done} alt="Done Icon" onClick={handleTitleDoneIcon} />
+                            onChange={handleSearch}/>
+                        <img src={icons.done} alt="Done Icon" onClick={handleDoneIcon} />
                     </div>
                 ) : (
                     <img src={icons.search} alt="Search Icon" onClick={() => setIsSearchingCards(true)} />

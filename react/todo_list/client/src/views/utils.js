@@ -1,224 +1,243 @@
-import { colors } from '../data/colors';
-import { API_BASE_URL } from './config';
+import { colors } from "../data/colors";
+import { API_BASE_URL } from "./config";
 
-export const addNewList = (setLists, newListTitle, setNewListTitle) => {
-    const randomIndex = Math.floor(Math.random() * colors.length);
-    const randomColor = colors[randomIndex];
+const getRandomColor = () => {
+  const randomIndex = Math.floor(Math.random() * colors.length);
+  return colors[randomIndex];
+};
 
-    if (newListTitle) {
-        const newList = {
-            title: newListTitle,
-            bgColor: randomColor,
-            cards: []
-        };
-
-        try {
-            fetch(`${API_BASE_URL}`, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify(newList),
-            })
-            .then((response) => {
-                if (!response.ok) {
-                    throw new Error('Network response was not ok');
-                }
-                return response.json();
-            })
-            .then((data) => {
-                setLists((prev) => [...prev, data]);
-                setNewListTitle('');
-            });
-        } catch (error) {
-            console.error('Error adding new list:', error);
-        }
-    }
+export const getAllLists = async (setLists) => {
+  try {
+      const response = await fetch(API_BASE_URL);
+      if (!response.ok) {
+          throw new Error(`Error fetching data: ${response.status} ${response.statusText}`);
+      }
+      const data = await response.json();
+      setLists(data);
+  } catch (error) {
+      console.error('Error fetching data:', error.message);
+  }
 };
 
 
-export const updateListTitle = async (id, newTitle, lists, setLists) => {
-    const updatedLists = [...lists];
-    const updatedList = updatedLists.find((list) => list._id === id);
-
-    updatedList.title = newTitle;
+export const addNewList = (setLists, newListTitle, setNewListTitle) => {
+  if (newListTitle) {
+    const newList = {
+      title: newListTitle,
+      bgColor: getRandomColor(),
+      cards: [],
+    };
 
     try {
-        const response = await fetch(`${API_BASE_URL}/${id}`, {
-            method: 'PUT',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(updatedList),
+      fetch(`${API_BASE_URL}`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(newList),
+      })
+        .then((response) => {
+          if (!response.ok) {
+            throw new Error("Network response was not ok");
+          }
+          return response.json();
+        })
+        .then((data) => {
+          setLists((prev) => [...prev, data]);
+          setNewListTitle("");
         });
-        if (!response.ok) {
-            throw new Error(`HTTP error! Status: ${response.status}`);
-        }
-        setLists(updatedLists);
     } catch (error) {
-        console.error('Error updating list title:', error);
+      console.error("Error adding new list:", error);
     }
+  }
+};
+
+export const updateListTitle = async (listId, title, lists, setLists) => {
+
+  try {
+    const response = await fetch(`${API_BASE_URL}/${listId}`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ title: title }),
+    });
+    if (!response.ok) {
+      throw new Error(`HTTP error! Status: ${response.status}`);
+    }
+    const data = await response.json();
+    const updatedLists = lists.map((list) => {
+      if (list._id === listId) {
+        return data;
+      }
+      return list;
+    });
+    setLists(updatedLists);
+  } catch (error) {
+    console.error("Error updating list title:", error);
+  }
 };
 
 export const deleteList = async (listId, lists, setLists) => {
-    const confirmDelete = window.confirm("Are you sure you want to delete this list?");
-    
-    if (confirmDelete) {
-        const updatedLists = lists.filter((list) => list._id !== listId);
+  const confirmDelete = window.confirm(
+    "Are you sure you want to delete this list?"
+  );
 
-        try {
-            const response = await fetch(`${API_BASE_URL}/${listId}`, {
-                method: 'DELETE',
-            });
-            if (!response.ok) {
-                throw new Error(`HTTP error! Status: ${response.status}`);
-            }
-            setLists(updatedLists);
-        } catch (error) {
-            console.error('Error deleting list:', error);
-        }
-    } else {
-        return;
+  if (confirmDelete) {
+    
+    try {
+      const response = await fetch(`${API_BASE_URL}/${listId}`, {
+        method: "DELETE",
+      });
+      if (!response.ok) {
+        throw new Error(`HTTP error! Status: ${response.status}`);
+      }
+      const updatedLists = lists.filter((list) => list._id !== listId);
+      setLists(updatedLists);
+    } catch (error) {
+      console.error("Error deleting list:", error);
     }
+  } else {
+    return;
+  }
 };
 
 export const addCard = async (listId, newCard, lists, setLists) => {
 
-    const updatedLists = [...lists];
-    const updatedList = updatedLists.find((list) => list._id === listId);
+  const updatedList = lists.find((list) => list._id === listId);
+  updatedList.cards.push(newCard);
 
-    updatedList.cards.push(newCard);
-
-    try {
-        const response = await fetch(`${API_BASE_URL}/${listId}`, {
-            method: 'PUT',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(updatedList),
-        });
-        if (!response.ok) {
-            throw new Error(`HTTP error! Status: ${response.status}`);
-        }
-        setLists(updatedLists);
-    } catch (error) {
-        console.error('Error adding new card:', error);
+  try {
+    const response = await fetch(`${API_BASE_URL}/${listId}`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(updatedList),
+    });
+    if (!response.ok) {
+      throw new Error(`HTTP error! Status: ${response.status}`);
     }
+    const data = await response.json();
+    const updatedLists = lists.map((list) => {
+      if (list._id === listId) {
+        return data;
+      }
+      return list;
+    });
+    setLists(updatedLists);
+  } catch (error) {
+    console.error("Error adding new card:", error);
+  }
 };
 
 export const updateCard = async (listId, cardId, newCard, lists, setCards) => {
 
-    const updatedLists = [...lists];
-    const updatedList = updatedLists.find((list) => list._id === listId);
-
-    const updatedCards = [...updatedList.cards];
-    const updatedCard = updatedCards.find((card) => card._id === cardId);
-
-    updatedCard.title = newCard.title;
-    updatedCard.description = newCard.description;
-    updatedCard.isCompleted = newCard.isCompleted;
-
-    updatedList.cards = updatedCards;
-
-    try {
-        const response = await fetch(`${API_BASE_URL}/${listId}`, {
-            method: 'PUT',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(updatedList),
-        });
-        if (!response.ok) {
-            throw new Error(`HTTP error! Status: ${response.status}`);
-        }
-        setCards(updatedCards);
-    } catch (error) {
-        console.error('Error updating card:', error);
+  const updatedList = lists.find((list) => list._id === listId);
+  const updatedCard = updatedList.cards.map((card) => {
+    if (card._id === cardId) {
+      return { ...card, ...newCard };
     }
+    return card;
+  });
+
+  try {
+    const response = await fetch(`${API_BASE_URL}/${listId}`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ cards: updatedCard }),
+    });
+    if (!response.ok) {
+      throw new Error(`HTTP error! Status: ${response.status}`);
+    }
+    const data = await response.json();
+    setCards(data.cards);
+  } catch (error) {
+    console.error("Error updating card:", error);
+  }
 };
 
 export const deleteCard = async (listId, cardId, lists, setCards) => {
-    const confirmDelete = window.confirm("Are you sure you want to delete this card?");
+  const confirmDelete = window.confirm(
+    "Are you sure you want to delete this card?"
+  );
 
-    if (confirmDelete) {
-        const updatedLists = [...lists];
-        const updatedList = updatedLists.find((list) => list._id === listId);
-    
-        const updatedListCards = updatedList.cards.filter((card) => card._id !== cardId);
-        
-        updatedList.cards = updatedListCards;
+  if (confirmDelete) {
+    const updatedList = lists.find((list) => list._id === listId);
 
-        try {
-            const response = await fetch(`${API_BASE_URL}/${listId}`, {
-                method: 'PUT',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify(updatedList),
-            });
-            if (!response.ok) {
-                throw new Error(`HTTP error! Status: ${response.status}`);
-            }
-            setCards(updatedListCards);
-        } catch (error) {
-            console.error('Error deleting card:', error);
-        }
-    } else {
-        return;
+    const updatedCards = updatedList.cards.filter(
+      (card) => card._id !== cardId
+    );
+
+    try {
+      const response = await fetch(`${API_BASE_URL}/${listId}`, {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ cards: updatedCards }),
+      });
+      if (!response.ok) {
+        throw new Error(`HTTP error! Status: ${response.status}`);
+      }
+      const data = await response.json();
+      setCards(data.cards);
+    } catch (error) {
+      console.error("Error deleting card:", error);
     }
+  } else {
+    return;
+  }
 };
 
 export const updateBgColor = async (listId, newColor, lists, setLists) => {
 
-    const updatedLists = [...lists];
-    const updatedList = updatedLists.find((list) => list._id === listId);
-
-    updatedList.bgColor = newColor;
-
-    try {
-        const response = await fetch(`${API_BASE_URL}/${listId}`, {
-            method: 'PUT',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(updatedList),
-        });
-        if (!response.ok) {
-            throw new Error(`HTTP error! Status: ${response.status}`);
-        }
-        setLists(updatedLists);
-    } catch (error) {
-        console.error('Error updating title background color:', error);
+  try {
+    const response = await fetch(`${API_BASE_URL}/${listId}`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ bgColor: newColor }),
+    });
+    if (!response.ok) {
+      throw new Error(`HTTP error! Status: ${response.status}`);
     }
+    const data = await response.json();
+    const updatedLists = lists.map((list) => {
+      if (list._id === listId) {
+        return data;
+      }
+      return list;
+    });
+    setLists(updatedLists);
+  } catch (error) {
+    console.error("Error updating title background color:", error);
+  }
 };
 
-export const searchCards = async (searchQuery, lists, setSearchResults) => {
-    if (!searchQuery) {
-        setSearchResults(lists);
-        return;
+export const searchCards = async (searchQuery, setSearchResults, setIsSearching) => {
+  if (!searchQuery) {
+    setIsSearching(false);
+    return;
+  }
+
+  try {
+    const response = await fetch(`${API_BASE_URL}/search/${searchQuery}`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+
+    if (!response.ok) {
+      throw new Error("Network response was not ok");
     }
-
-    const results = lists.filter((list) =>
-        list.cards.some((card) =>
-            card.title.toLowerCase().startsWith(searchQuery.toLowerCase())
-        )
-    );
-
-    try {
-        const response = await fetch(`${API_BASE_URL}/search/${searchQuery}`, {
-            method: 'GET',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-        });
-
-        if (!response.ok) {
-            throw new Error('Network response was not ok');
-        }
-
-        setSearchResults(results);
-    } catch (error) {
-        console.error('Error searching cards:', error);
-    }
+    const data = await response.json();
+    setSearchResults(data);
+  } catch (error) {
+    console.error("Error searching cards:", error);
+  }
 };
-
