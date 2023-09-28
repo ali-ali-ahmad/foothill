@@ -27,3 +27,11 @@ main {
     flex-wrap: wrap;
     padding: 10px;
 }
+
+@media (max-width: 600px) {
+    .container > header {
+        flex-direction: column;
+        gap: 10px;
+    }
+}
+

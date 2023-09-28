@@ -7,6 +7,12 @@
     gap: 5px;
 }
 
+@media (max-width: 375px) {
+    .searchContainer {
+        width: 90%;
+    }
+}
+
 .searchContainer > input{
     width: 300px;
     border: none;
