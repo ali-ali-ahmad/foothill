@@ -3,7 +3,7 @@ import Note from '../components/Note';
 import NoteNewInput from '../components/NoteNewInput';
 import SearchBar from '../components/SearchBar';
 import styles from './css/LandingPage.module.css';
-import { API_BASE_URL } from '../data/config';
+import { fetchAllNotes } from '../utils/noteUtil';
 
 const  LandingPage = () => {
     const [notes, setNotes] = useState([]);
@@ -12,20 +12,7 @@ const  LandingPage = () => {
 
 
     useEffect(() => {
-        const fetchData = async () => {
-            try {
-                const response = await fetch(API_BASE_URL);
-                if (!response.ok) {
-                    throw new Error(`Error fetching data: ${response.status} ${response.statusText}`);
-                }
-                const data = await response.json();
-                setNotes(data);
-            } catch (error) {
-                console.error('Error fetching data:', error.message);
-            }
-        };
-
-        fetchData();
+        fetchAllNotes(setNotes);
     }, []);
     
     return (

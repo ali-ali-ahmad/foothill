@@ -8,8 +8,15 @@ const NoteSchema = new mongoose.Schema({
     content: {
         type: String,
     },
-    backgroundColor: {
+    link: {
         type: String,
+        // validate: {
+        //     validator: function(value) {
+        //         const urlRegex = /^(https?|ftp):\/\/[^\s/$.?#].[^\s]*$/;
+        //         return urlRegex.test(value);
+        //     },
+        //     message: 'Invalid URL format',
+        // },
     }
 }, {timestamps: true});
 module.exports.Note = mongoose.model('Note', NoteSchema)

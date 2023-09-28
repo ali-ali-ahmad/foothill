@@ -1,27 +1,26 @@
 import {useState} from 'react';
 import styles from './css/NoteNewInput.module.css';
 import { addNewNote } from '../utils/noteUtil';
-import { colors } from '../data/colors';
 
 const NoteNewInput = ({setNotes}) => {
     const [isAddingNote, setIsAddingNote] = useState(false);
     const [newTitle, setNewTitle] = useState('');
     const [newContent, setNewContent] = useState('');
+    const [newLink, setNewLink] = useState('');
 
     const handleNewNote = (e) => {
-        const randomIndex = Math.floor(Math.random() * colors.length);
-        const randomColor = colors[randomIndex];
-
+        
         e.stopPropagation();
         if (newTitle) {
             const newNote = {
                 title: newTitle,
                 content: newContent,
-                backgroundColor: randomColor
+                link: newLink
             }
             addNewNote(newNote, setNotes)
             setNewTitle('');
             setNewContent('');
+            setNewLink('');
             setIsAddingNote(false);
         }
     };
@@ -50,6 +49,13 @@ const NoteNewInput = ({setNotes}) => {
                         type="text" 
                         placeholder='Take a note...'
                         onChange={(e) => setNewContent(e.target.value)}
+                    />
+                    <input 
+                        className={styles.contentInput}
+                        value={newLink}
+                        type="text" 
+                        placeholder='Add a link'
+                        onChange={(e) => setNewLink(e.target.value)}
                     />
                     <div className={styles.actionButtons}>
                         <button 

@@ -3,7 +3,7 @@ import styles from './css/SearchBar.module.css';
 import { icons } from '../data/icons';
 import { searchNote } from '../utils/noteUtil';
 
-const  SearchBar = ({notes, setSearchResults, isSearching, setIsSearching}) => {
+const  SearchBar = ({setSearchResults, isSearching, setIsSearching}) => {
     const [searchQuery, setSearchQuery] = useState('');
 
     const handleSearch = (e) => {
@@ -11,7 +11,7 @@ const  SearchBar = ({notes, setSearchResults, isSearching, setIsSearching}) => {
         e.stopPropagation();
         setIsSearching(true);
         setSearchQuery(query);
-        searchNote(query, notes, setSearchResults);
+        searchNote(query, setSearchResults, setIsSearching);
     };
 
     const handleSearchCancel = (e) => {

@@ -8,6 +8,19 @@ export const formatedDate = (timestamp) => {
     return `${mm}/${dd}/${yyyy}`;
 };
 
+export const fetchAllNotes = async (setNotes) => {
+    try {
+        const response = await fetch(API_BASE_URL);
+        if (!response.ok) {
+            throw new Error(`Error fetching data: ${response.status} ${response.statusText}`);
+        }
+        const data = await response.json();
+        setNotes(data);
+    } catch (error) {
+        console.error('Error fetching data:', error.message);
+    }
+};
+
 export const addNewNote = (newNote, setNotes) => {
 
     try {
@@ -34,12 +47,6 @@ export const addNewNote = (newNote, setNotes) => {
 };
 
 export const noteUpdate = async (noteId, newNote, notes, setNotes) => {
-    const updatedNotes = [...notes];
-    const updatedNote = updatedNotes.find((note) => note._id === noteId);
-
-    updatedNote.title = newNote.title;
-    updatedNote.content = newNote.content;
-    updatedNote.backgroundColor = newNote.backgroundColor;
 
     try {
         const response = await fetch(`${API_BASE_URL}/${noteId}`, {
@@ -47,11 +54,18 @@ export const noteUpdate = async (noteId, newNote, notes, setNotes) => {
             headers: {
                 'Content-Type': 'application/json',
             },
-            body: JSON.stringify(updatedNote),
+            body: JSON.stringify(newNote),
         });
         if (!response.ok) {
             throw new Error(`HTTP error! Status: ${response.status}`);
         }
+        const data = await response.json();
+        const updatedNotes = notes.map((note) => {
+            if (note._id === noteId) {
+                return data;
+            }
+            return note;
+        });
         setNotes(updatedNotes);
     } catch (error) {
         console.error('Error updating note:', error);
@@ -76,9 +90,9 @@ export const noteDelete = async (noteId, notes, setNotes) => {
 
 };
 
-export const searchNote = async (searchQuery, notes, setSearchResults) => {
+export const searchNote = async (searchQuery, setSearchResults, setIsSearching) => {
     if (!searchQuery) {
-        setSearchResults(notes);
+        setIsSearching(false);
         return;
     }
 

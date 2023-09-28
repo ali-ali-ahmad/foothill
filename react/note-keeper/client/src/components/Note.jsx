@@ -21,9 +21,10 @@ const  Note = ({note, notes, setNotes}) => {
 
     return (
         <>
-            <div className={styles.noteContainer} onClick={handleEdit} style={{ backgroundColor: note.backgroundColor }}>
+            <div className={styles.noteContainer} onClick={handleEdit}>
                 <p className={styles.noteTitle}>{note.title}</p>
                 <p className={styles.noteContent}>{note.content}</p>
+                <p className={styles.noteLink}>{note.link}</p>
                 <div>
                     <p className={styles.noteDate}>{formatedDate(note.createdAt)}</p>
                     <img 

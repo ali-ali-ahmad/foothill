@@ -1,6 +1,5 @@
 .noteContainer {
     width: 200px;
-    height: 200px;
     border-radius: 10px;
     cursor: pointer;
     display: flex;
@@ -8,6 +7,7 @@
     justify-content: space-between;
     text-align: left;
     padding: 5px;
+    background-color: orange;
 }
 
 .noteContainer > div {
@@ -29,4 +29,14 @@
 
 .noteContainer:hover .deleteIcon {
     opacity: 1;
+}
+
+.noteLink {
+    text-decoration: underline;
+    color: blue;
+    font-size: 12px;
+}
+
+.noteContent, .noteTitle, .noteLink {
+    word-wrap: break-word; 
 }

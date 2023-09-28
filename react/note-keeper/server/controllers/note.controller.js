@@ -1,13 +1,13 @@
 const {Note} = require('../models/note.model');
 
 module.exports.createNote = async (request, response) => {
-    const { title, content, backgroundColor } = request.body;
+    const { title, content, link } = request.body;
 
     try {
         const note = await Note.create({
             title,
             content,
-            backgroundColor
+            link
         });
         if (!note) {
             return response.status(404).json({ message: 'Cant create note' });
